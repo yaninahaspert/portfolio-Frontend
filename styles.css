@@ -2,15 +2,16 @@
     padding: 0;
     margin: 0;
     border: 0;
-    font-family: Helvetica;
 }
-.btn_login{
+
+.btn_login {
     background-color: #9FD4CA;
     color: white;
     font-weight: bold;
     border-radius: 5px;
 }
-.btn_login:hover{
+
+.btn_login:hover {
     background-color: #1c2834;
     color: #9FD4CA;
 }
@@ -48,7 +49,6 @@
     justify-content: center;
 }
 
-
 .boton_contactarme {
     background-color: #9fd4ca;
     height: 35px;
@@ -59,7 +59,8 @@
     box-shadow: 1px 1px 5px #9fd4ca;
     text-shadow: 3px 3px 3px darkgray;
 }
-.boton_contactarme:hover{
+
+.boton_contactarme:hover {
     color: #eefcf1;
 }
 
@@ -88,8 +89,11 @@
     border: 5px solid #9fd4ca;
     width: 350px;
 }
-.color_logo{
-    filter: invert(100%) sepia(97%) saturate(0%) hue-rotate(172deg) brightness(95%) contrast(100%);}
+
+.color_logo {
+    filter: invert(100%) sepia(97%) saturate(0%) hue-rotate(172deg) brightness(95%) contrast(100%);
+}
+
 .titulos {
     background-color: #9fd4ca;
     color: #354355;
@@ -103,7 +107,6 @@
     justify-content: end;
     text-shadow: 3px 3px 3px darkgray;
     box-shadow: 2px 2px 5px #9fd4ca;
-
 }
 
 .nombre_institucion {
@@ -150,7 +153,6 @@
 .contenedorFoto {
     display: flex;
     justify-content: flex-end;
-
 }
 
 .misEstudios {
@@ -188,10 +190,12 @@
 .nombre_barras {
     color: #f8af75;
 }
-.logos{
+
+.logos {
     max-width: 150px;
     float: start;
 }
+
 @media screen and (max-width: 1140px) {
     .descripcion_banner {
         width: 90%;
@@ -213,7 +217,6 @@
     .descripcion_perfil {
         width: 75%;
         font-size: 1rem;
-
     }
 }
 
@@ -258,14 +261,14 @@
         text-align: justify;
         padding-top: 1rem;
     }
-    .logos{
+
+    .logos {
         width: 90px;
     }
 
     .titulos {
         width: 100%;
         font-size: 2.2rem;
-
     }
 
     .foto_perfil {
@@ -281,7 +284,8 @@
     .aboutme {
         margin-top: 20px;
     }
-    .btn_login{
+
+    .btn_login {
         width: 70px;
     }
 
@@ -292,17 +296,16 @@
     .banner {
         padding-bottom: 0;
     }
-    .contenedor_experiencia .card{
+
+    .contenedor_experiencia .card {
         text-align: center;
     }
-
 }
 
 @media screen and (max-width: 576px) {
-    .contenedor_experiencia .card{
+    .contenedor_experiencia .card {
         text-align: center;
     }
-
 
     .descripcion_banner {
         width: 90%;
@@ -336,7 +339,6 @@
     .titulos {
         width: 100%;
         font-size: 2rem;
-
     }
 
     .descripcion_banner h1 {
@@ -476,9 +478,8 @@
     flex-direction: column;
     box-shadow: 7px 7px 10px #9fd4ca;
     transition: 0.3s ease-in-out;
-
-
 }
+
 .contenedor_misproyectos :hover {
     transform: scale(1.01);
 }
@@ -534,7 +535,6 @@
     box-shadow: 2px 2px 10px darkgray;
 }
 
-
 /*contendor experiencia*/
 .contenedor_experiencia {
     position: relative;
@@ -557,8 +557,6 @@
     flex-direction: column;
     transition: 0.3s ease-in-out;
     box-shadow: 3px 5px 5px darkgray;
-
-
 }
 
 .contenedor_experiencia .card .imgEx {
@@ -579,6 +577,7 @@
 .svg_ {
     filter: drop-shadow(1px 1px 3px #888)
 }
+
 /*footer*/
 .footer {
     display: flex;
@@ -592,7 +591,6 @@
     margin: auto;
     padding: 10px;
     color: #9fd4ca;
-
 }
 
 .footer div svg {
@@ -604,7 +602,8 @@
     font-size: 1.8rem;
     width: 1.8rem;
 }
-.letras_verdes{
+
+.letras_verdes {
     color: #9FD4CA;
 }
 
@@ -612,9 +611,9 @@
     background-color: #f8af75;
     transform: scale(1);
     color: #9FD4CA;
-
 }
-.iconos li a svg{
+
+.iconos li a svg {
     background-color: #354355;
     height: 1.8rem;
     border-radius: 5px;
@@ -627,5 +626,4 @@
 .iconos li a svg:hover {
     color: #f8af75;
     transform: scale(1);
-
 }
