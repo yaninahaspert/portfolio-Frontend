@@ -487,11 +487,6 @@
     display: flex;
     flex-direction: column;
     box-shadow: 7px 7px 10px #9fd4ca;
-    transition: 0.3s ease-in-out;
-}
-
-.contenedor_misproyectos :hover {
-    transform: scale(1.01);
 }
 
 .letras_naranjas {
@@ -530,6 +525,11 @@
     background-color: #1c2834;
     padding: 10px;
     color: #f8af75;
+}
+.contenedor_misproyectos div button:hover{
+    transform: scale(1.1);
+    color: #f5fcf7;
+
 }
 
 .letrasnaranjash6 {
