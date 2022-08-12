@@ -199,6 +199,9 @@
     max-width: 150px;
     float: start;
 }
+.logos2{
+    width: 200px;
+ }
 
 @media screen and (max-width: 1140px) {
     .descripcion_banner {
@@ -267,6 +270,9 @@
     }
 
     .logos {
+        width: 80px;
+    }
+    .logos2{
         width: 90px;
     }
 
