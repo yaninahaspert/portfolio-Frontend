@@ -1,0 +1,22 @@
+{
+  "name": "my_portfolio_web",
+  "version": "1.0.0",
+  "description": "Mi portfolio web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaninahaspert/portfolio-Frontend.git"
+  },
+  "author": "Yanina Haspert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaninahaspert/portfolio-Frontend/issues"
+  },
+  "homepage": "https://github.com/yaninahaspert/portfolio-Frontend#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
