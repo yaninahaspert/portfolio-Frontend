@@ -1,0 +1,10 @@
+.texto{
+  color: black;
+  align-items: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.contenedor{
+  height: 600px;
+}
