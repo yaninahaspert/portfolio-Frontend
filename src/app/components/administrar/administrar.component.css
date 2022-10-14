@@ -1,0 +1,16 @@
+.administrar{
+margin-top: 25px;
+}
+p {
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: #9FD4CA 0 10px;
+}
+label{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+button{
+  margin-top: 15px;
+  margin-bottom: 35px;
+}

@@ -1,11 +1,10 @@
 <div class="container-fluid m-0 p-0 bg_banner">
   <div class="row pt-5 banner_fila">
     <div class="col-xs-12 col-sm-6 banner">
-      <div class="descripcion_banner">
-        <h1>Hola, soy <span class="nombre">Yanina Haspert</span></h1>
-        <h4>Full Stack</h4>
-        <p>Profesional que cuenta con diversas habildades informáticas, y que puede desenvolverse en el
-          frontend y en el backend de un desarrollo web.</p>
+      <div class="descripcion_banner" *ngFor="let item of banner">
+        <h1>Hola, soy <span class="nombre">{{item.nombre}}</span></h1>
+        <h4>{{item.titulo}}</h4>
+        <p>{{item.descripcion}}</p>
         <button type="button" class=" boton_contactarme" [routerLink]="['/contacto']">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                class="mx-2 bi bi-envelope-fill" viewBox="0 0 16 16">

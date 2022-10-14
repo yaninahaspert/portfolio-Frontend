@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-md-6 contenedorFoto px-xl-5">
       <img class="foto_perfil img-fluid" src="assets/images/yanina-removebg-preview.png">
     </div>
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6" *ngFor="let item of acerca_de_mi">
       <div class="descripcion_perfil">
         <div class="d-flex" style="justify-content: space-between">
         <h4 class="aboutme">Acerca de mí</h4>
@@ -12,17 +12,8 @@
         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
         </svg></div>
         </div>
-        <h1>Yanina Haspert</h1>
-        <p>Como Full Stack Developer cuento con una faceta integral
-          y tengo conocimientos y herramientas que me permiten afrontar cualquiera de las etapas de un
-          proyecto web.
-          <br>
-          Me apasiona el Desarrollado Frontend. Aca me siento responsable de la interacción directa del
-          usuario,
-          por lo que mi desarrollo es enfocado al lado más visual de las aplicaciones, como el
-          cuidado de colores, botones, enlaces, menús y todo lo que vemos en una página
-          cuando estamos accediendo. Precisamente, como profesional frontend considero que tengo un ojo
-          constante para la mejor experiencia de usuario
+        <h1>{{item.nombre}}</h1>
+        <p>{{item.descripcion}}
         </p>
         <button type="button" class="boton_contactarme">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"

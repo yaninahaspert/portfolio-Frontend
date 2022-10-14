@@ -7,10 +7,10 @@ import {ServicioService} from "../../servicio.service";
   styleUrls: ['./estudios.component.css']
 })
 export class EstudiosComponent implements OnInit {
-  servicio:any[]=[];
+  estudios:any[]=[];
 
   constructor(private _servicio: ServicioService) {
-    this.servicio = _servicio.obtenerServicio()
+    this.estudios = _servicio.obtenerEstudio()
   }
 
   ngOnInit(): void {

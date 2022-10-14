@@ -19,6 +19,14 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import {ContactoComponent} from "./components/contacto/contacto.component";
 import {RouterModule, Routes} from "@angular/router";
+import { AdministrarComponent } from './components/administrar/administrar.component';
+import { BannerAdmComponent } from './components/componentsAdm/banner-adm/banner-adm.component';
+import { AcercademiAdmComponent } from './components/componentsAdm/acercademi-adm/acercademi-adm.component';
+import { EstudiosAdmComponent } from './components/componentsAdm/estudios-adm/estudios-adm.component';
+import { ProyectosAdmComponent } from './components/componentsAdm/proyectos-adm/proyectos-adm.component';
+import { ExperieniaAdmComponent } from './components/componentsAdm/experienia-adm/experienia-adm.component';
+import { SoftSkillAdmComponent } from './components/componentsAdm/soft-skill-adm/soft-skill-adm.component';
+import { HardSkillAdmComponent } from './components/componentsAdm/hard-skill-adm/hard-skill-adm.component';
 
 const appRoutes:Routes=[
   {
@@ -28,6 +36,10 @@ const appRoutes:Routes=[
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'administrar',
+    component: AdministrarComponent
   },
   {
     path:'contacto',
@@ -56,6 +68,14 @@ const appRoutes:Routes=[
     PageNotFoundComponent,
     HomeComponent,
     LoginComponent,
+    AdministrarComponent,
+    BannerAdmComponent,
+    AcercademiAdmComponent,
+    EstudiosAdmComponent,
+    ProyectosAdmComponent,
+    ExperieniaAdmComponent,
+    SoftSkillAdmComponent,
+    HardSkillAdmComponent,
   ],
   imports: [
     BrowserModule,
