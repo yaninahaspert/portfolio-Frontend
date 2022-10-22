@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-skill-soft',
   templateUrl: './skill-soft.component.html',

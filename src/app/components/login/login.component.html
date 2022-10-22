@@ -1,16 +1,26 @@
 <div class="login-page">
   <div class="form">
-    <form class="register-form" style="background: #f5fcf7">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button style="background:#9FD4CA" class="login">login</button>
+    <form class="login-form" [formGroup]="form" (ngSubmit)="onEnviar($event)">
+      <input type="email" placeholder="Username" formControlName="email" class="mb-0 mt-3"/>
+      <div *ngIf="email?.errors && email?.touched">
+        <p *ngIf="email?.hasError('required')" class="text-danger mensaje">
+          El email es requerido.
+        </p>
+        <p *ngIf="email?.hasError('email')" class="text-danger mensaje">
+          El formato de email debe ser válido.
+        </p>
+      </div>
+      <input type="password" placeholder="Password" formControlName="contrasena" class="mb-0 mt-3"
+             [ngClass]="{'is-invalid': contrasena?.errors && contrasena?.touched, 'is-valid': !contrasena?.errors&& contrasena?.touched}"/>
+      <div *ngIf="contrasena?.errors && contrasena?.touched">
+        <p *ngIf="contrasena?.hasError('required')" class="text-danger mensaje">
+          La contraseña es requerida.
+        </p>
+        <p *ngIf="contrasena?.errors?.minLength" class="text-danger mensaje">
+          La contraseña debe ser de 8 o más caracteres.
+        </p>
+      </div>
+      <button style="background:#9FD4CA" class="login mb-0 mt-3">Login</button>
     </form>
   </div>
 </div>

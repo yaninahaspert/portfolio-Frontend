@@ -27,10 +27,20 @@ import { ProyectosAdmComponent } from './components/componentsAdm/proyectos-adm/
 import { ExperieniaAdmComponent } from './components/componentsAdm/experienia-adm/experienia-adm.component';
 import { SoftSkillAdmComponent } from './components/componentsAdm/soft-skill-adm/soft-skill-adm.component';
 import { HardSkillAdmComponent } from './components/componentsAdm/hard-skill-adm/hard-skill-adm.component';
+import {HttpClientModule} from "@angular/common/http";
+import {AcercademiService} from "./components/acercademi/acercademi.service";
+import { FormularioComponent } from './components/acercademi/formulario.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormularioBannerComponent } from './components/banner/formulario-banner.component';
+import { FormularioEstudiosComponent } from './components/estudios/formulario-estudios.component';
+import { FormularioExperienciaComponent } from './components/experincia/formulario-experiencia.component';
+import { FormulariosProyectosComponent } from './components/proyectos/formularios-proyectos.component';
+import { FormularioSoftComponent } from './components/skill-soft/formulario-soft.component';
+
 
 const appRoutes:Routes=[
   {
-    path: '',
+    path: 'portada',
     component: HomeComponent
   },
   {
@@ -46,11 +56,13 @@ const appRoutes:Routes=[
     component: ContactoComponent,
   },
   {
+    path:'formulario',
+    component: FormularioComponent,
+  },
+  {
     path:'**',
     component: PageNotFoundComponent,
   },
-
-
 ]
 
 @NgModule({
@@ -76,15 +88,25 @@ const appRoutes:Routes=[
     ExperieniaAdmComponent,
     SoftSkillAdmComponent,
     HardSkillAdmComponent,
+    FormularioComponent,
+    FormularioBannerComponent,
+    FormularioEstudiosComponent,
+    FormularioExperienciaComponent,
+    FormulariosProyectosComponent,
+    FormularioSoftComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    ReactiveFormsModule,
 
   ],
   providers: [
-    ServicioService
+    ServicioService,
+    AcercademiService
   ],
   bootstrap: [AppComponent]
 })

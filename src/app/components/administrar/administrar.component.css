@@ -11,6 +11,16 @@ label{
   margin-top: 10px;
 }
 button{
-  margin-top: 15px;
   margin-bottom: 35px;
+}
+.boton{
+  background: #9fd4ca;
+  border: 1px solid #9fd4ca;
+  font-weight: bold;
+  font-size: 17px;
+}
+.volver{
+  background: #f8af75;
+  border: 1px solid #f8af75;
+  font-weight: bold;
 }

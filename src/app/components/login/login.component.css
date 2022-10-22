@@ -93,3 +93,7 @@ body {
 .login{
   font-weight: bold;
 }
+.mensaje{
+  margin: 0;
+  text-align: left;
+}

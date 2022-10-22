@@ -647,7 +647,12 @@
   display: flex;
   align-items: center;
 }
+
 .lapiz{
   color: #1c2834;
+}
+.enviar{
+  background:#9FD4CA;
+  border:1px solid #9FD4CA;
 }
 

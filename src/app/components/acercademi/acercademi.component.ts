@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ServicioService} from "../../servicio.service";
+import {Acercademi} from "./acercademi";
+import {ACERCADEMI} from "./acercademi.json";
+import {AcercademiService} from "./acercademi.service";
 
 @Component({
   selector: 'app-acercademi',
@@ -7,14 +10,17 @@ import {ServicioService} from "../../servicio.service";
   styleUrls: ['./acercademi.component.css']
 })
 export class AcercademiComponent implements OnInit {
-  acerca_de_mi:any[]=[];
 
-  constructor(private _servicio: ServicioService) {
-    this.acerca_de_mi = _servicio.obtenerAcerca_de_mi()
+  acercademi: Acercademi[] = [];
+
+  constructor(private acercademiService: AcercademiService) {
+    this.acercademiService.getAcercademi().subscribe(
+    acercademi => this.acercademi = acercademi);
   }
 
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,0 +1,7 @@
+.btn_agregar{
+  margin-right: 350px;
+}
+.encabezado{
+  display: flex;
+  justify-content: space-between;
+}
