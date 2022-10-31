@@ -5,7 +5,7 @@
       <div class="form-group">
         <label>NOMBRE Y APELLIDO*</label>
         <input type="text" class="form-control my-3" [(ngModel)]="acercademi.nombre" name="nombre"
-               placeholder="Ingrese nombre y apellido" required
+               placeholder="Ingresá tu nombre y apellido" required
                #nombre="ngModel">
 
         <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
@@ -15,62 +15,22 @@
             Campo obligatorio.
           </div>
         </div>
-        <div>
-          <label>DESCRIPCIÓN COMPLETA*</label>
-          <textarea type="text" class="form-control my-3" name="descripcion"
-         placeholder="Ingrese descripción" [(ngModel)]="acercademi.descripcion_completa"
-                    required minlength="10" #descripcion_completa="ngModel">>
-            </textarea>
-          <div *ngIf="descripcion_completa.invalid && (descripcion_completa.dirty || descripcion_completa.touched)"
-               class="alerta">
+      </div>
+      <div class="form-group">
+        <label>PROFESIÓN*</label>
+        <input type="url" class="form-control my-3" placeholder="Ingresá tu profesión" required [(ngModel)]="acercademi.profesion"
+               name="profesion"  #profesion="ngModel">
+        <div *ngIf="profesion.invalid && (profesion.dirty || profesion.touched)"
+             class="alerta">
 
-            <div class="alerta" *ngIf="descripcion_completa.errors?.['required']">
-              Campo obligatorio.
-            </div>
-            <div *ngIf="descripcion_completa.errors?.['minlength']">
-              Descripción demasiado corta.
-            </div>
+          <div class="alerta" *ngIf="profesion.errors?.['required']">
+            Campo obligatorio.
           </div>
         </div>
-        <div class="form-group">
-          <label>URL FOTO DE PERFIL*</label>
-          <input type="url" class="form-control my-3" placeholder="Ingrese imagen" required [(ngModel)]="acercademi.url_foto_perfil"
-                 name="foto"  #foto="ngModel">
-          <div *ngIf="foto.invalid && (foto.dirty || foto.touched)"
-               class="alerta">
-
-            <div class="alerta" *ngIf="foto.errors?.['required']">
-              Campo obligatorio.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>URL FOTO DE PRESENTACION (BANNER)*</label>
-          <input type="url" class="form-control my-3" placeholder="Ingrese imagen" required [(ngModel)]="acercademi.url_foto_presentacion"
-                 name="fotoBanner"  #fotoBanner="ngModel">
-          <div *ngIf="fotoBanner.invalid && (fotoBanner.dirty || fotoBanner.touched)"
-               class="alerta">
-
-            <div class="alerta" *ngIf="fotoBanner.errors?.['required']">
-              Campo obligatorio.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>PROFESIÓN*</label>
-          <input type="url" class="form-control my-3" placeholder="Ingrese imagen" required [(ngModel)]="acercademi.profesion"
-                 name="profesion"  #profesion="ngModel">
-          <div *ngIf="profesion.invalid && (profesion.dirty || profesion.touched)"
-               class="alerta">
-
-            <div class="alerta" *ngIf="profesion.errors?.['required']">
-              Campo obligatorio.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
+      </div>
+      <div class="form-group">
           <label>DESCRIPCIÓN CORTA*</label>
-          <input type="url" class="form-control my-3" placeholder="Ingrese imagen" required maxlength="100" [(ngModel)]="acercademi.descripcion_breve"
+          <input type="url" class="form-control my-3" placeholder="Ingresá una descripcion corta sobre tus habilidades" required maxlength="200" [(ngModel)]="acercademi.descripcionBreve"
                  name="descripcion_breve"  #descripcion_breve="ngModel">
           <div *ngIf="descripcion_breve.invalid && (descripcion_breve.dirty || descripcion_breve.touched)"
                class="alerta">
@@ -83,7 +43,47 @@
             </div>
           </div>
         </div>
+      <div class="form-group">
+        <label>URL FOTO DE PRESENTACION (BANNER)*</label>
+        <input type="url" class="form-control my-3" placeholder="Ingresá la URL de la imagen/foto para el banner de presentación" required [(ngModel)]="acercademi.urlImagenPresentacion"
+               name="fotoBanner"  #fotoBanner="ngModel">
+        <div *ngIf="fotoBanner.invalid && (fotoBanner.dirty || fotoBanner.touched)"
+             class="alerta">
+
+          <div class="alerta" *ngIf="fotoBanner.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
       </div>
+        <div>
+          <label>DESCRIPCIÓN COMPLETA*</label>
+          <textarea type="text" class="form-control my-3" name="descripcionCompleta"
+         placeholder="Ingresá una descripcion sobre tu perfil" [(ngModel)]="acercademi.descripcionCompleta"
+                    required minlength="10" #descripcionCompleta="ngModel">>
+            </textarea>
+          <div *ngIf="descripcionCompleta.invalid && (descripcionCompleta.dirty || descripcionCompleta.touched)"
+               class="alerta">
+
+            <div class="alerta" *ngIf="descripcionCompleta.errors?.['required']">
+              Campo obligatorio.
+            </div>
+            <div *ngIf="descripcionCompleta.errors?.['minlength']">
+              Descripción demasiado corta.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>URL FOTO DE PERFIL*</label>
+          <input type="url" class="form-control my-3" placeholder="Ingresá la URL de la foto de tu perfil" required [(ngModel)]="acercademi.urlFoto"
+                 name="foto"  #foto="ngModel">
+          <div *ngIf="foto.invalid && (foto.dirty || foto.touched)"
+               class="alerta">
+
+            <div class="alerta" *ngIf="foto.errors?.['required']">
+              Campo obligatorio.
+            </div>
+          </div>
+        </div>
       <div class="boton">
         <button type="submit" class="btn btn-primary my-3 enviar" [disabled]="!desabilitar_boton.form.valid">ENVIAR</button>
       </div>

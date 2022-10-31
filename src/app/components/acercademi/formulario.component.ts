@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Acercademi} from "./acercademi";
+import {Persona} from "./persona";
 import {AcercademiService} from "./acercademi.service";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -12,13 +12,23 @@ import Swal from 'sweetalert2';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-  public acercademi: Acercademi = new Acercademi()
+  public acercademi: Persona = new Persona()
 
   constructor(private acercademiService: AcercademiService,
-              private router: Router) {
+              private router: Router,
+              private activateRouter: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.llenarinputs()
+  }
+  llenarinputs():void{
+    this.activateRouter.params.subscribe(params=>{
+      let id=params['id']
+      if(id){
+        this.acercademiService.getPersonaEditada(id).subscribe((acercademi)=>this.acercademi=acercademi)
+      }
+    })
   }
 
   public create(): void {
@@ -31,9 +41,27 @@ export class FormularioComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigate(["/"])
+
+        setTimeout(() => {
+          this.router.navigate(["/portada"])
+        }, 1500);
       }
     )
 
+  }
+  update():void{
+    this.acercademiService.update(this.acercademi).subscribe(acercademi =>{
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '¡Editado con éxito!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        this.router.navigate(["/portada"])
+      }, 1500);
+    })
   }
 }

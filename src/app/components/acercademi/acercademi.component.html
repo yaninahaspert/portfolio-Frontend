@@ -1,5 +1,8 @@
 <div class="container-fluid m-0 p-0 fondo_negro">
-  <div class="row perfil py-5">
+  <div *ngIf="personas?.length===0" class="alert alert-info text-center">
+    No hay registros del perfil en la base de datos.
+  </div>
+  <div class="row perfil py-5" *ngFor="let item of personas">
     <div class="col-xs-12 col-md-6 contenedorFoto px-xl-5">
       <img class="foto_perfil img-fluid" src="assets/images/yanina-removebg-preview.png">
     </div>
@@ -8,19 +11,19 @@
         <div class="d-flex" style="justify-content: space-between">
         <h4 class="aboutme">Acerca de mí</h4>
           <div class="d-flex mx-2" style="justify-content: space-between">
-          <div class="boton_editar" title="Editar" style="margin-right: 10px"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+          <div [routerLink]="['/formulario', personas[0].id]" class="boton_editar" title="Editar" style="margin-right: 10px"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
              class="bi bi-pen-fill lapiz" viewBox="0 0 16 16">
         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
         </svg></div>
-        <div class="boton_editar" title="Eliminar">
+        <div class="boton_editar" title="Eliminar" (click)="delete(personas[0])">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill lapiz" viewBox="0 0 16 16">
-          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
         </svg></div>
           </div>
         </div>
-      <div *ngFor="let item of acercademi">
+      <div >
         <h1>{{item.nombre}}</h1>
-        <p>{{item.descripcion_completa}}
+        <p>{{item.descripcionCompleta}}
         </p>
         <button type="button" class="boton_contactarme">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"

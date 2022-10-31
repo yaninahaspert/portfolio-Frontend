@@ -36,6 +36,7 @@ import { FormularioEstudiosComponent } from './components/estudios/formulario-es
 import { FormularioExperienciaComponent } from './components/experincia/formulario-experiencia.component';
 import { FormulariosProyectosComponent } from './components/proyectos/formularios-proyectos.component';
 import { FormularioSoftComponent } from './components/skill-soft/formulario-soft.component';
+import {interceptorProvider} from "./servicio/interceptor";
 
 
 const appRoutes:Routes=[
@@ -57,6 +58,10 @@ const appRoutes:Routes=[
   },
   {
     path:'formulario',
+    component: FormularioComponent,
+  },
+  {
+    path:'formulario/:id',
     component: FormularioComponent,
   },
   {
@@ -105,6 +110,7 @@ const appRoutes:Routes=[
 
   ],
   providers: [
+    interceptorProvider,
     ServicioService,
     AcercademiService
   ],

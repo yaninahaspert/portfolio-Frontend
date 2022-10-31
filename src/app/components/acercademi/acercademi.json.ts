@@ -1,13 +1,13 @@
-import {Acercademi} from "./acercademi";
-export const ACERCADEMI: Acercademi[]=[
+import {Persona} from "./persona";
+export const ACERCADEMI: Persona[]=[
   {
     id:1,
     nombre: "yanina",
-    descripcion_breve:"algo",
-    descripcion_completa:"otra cosa",
+    descripcionBreve:"algo",
+    descripcionCompleta:"otra cosa",
     profesion:"algo",
-    url_foto_presentacion:"foto",
-    url_foto_perfil:"foto"
+    urlImagenPresentacion:"foto",
+    urlFoto:"foto"
 
   }
 ];

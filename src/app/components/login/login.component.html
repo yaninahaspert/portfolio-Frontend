@@ -1,17 +1,20 @@
 <div class="login-page">
   <div class="form">
-    <form class="login-form" [formGroup]="form" (ngSubmit)="onEnviar($event)">
-      <input type="email" placeholder="Username" formControlName="email" class="mb-0 mt-3"/>
+    <form #f="ngForm" (ngSubmit)="onLogin()" class="login-form" novalidate>
+  <div>
+  <label class="form-label" for="nombreUsuario">Usuario </label>
+      <input id="nombreUsuario" [(ngModel)]="nombreUsuario" name="nombreUsuario" type="email" placeholder="Username"  class="mb-0 mt-3" required/>
       <div *ngIf="email?.errors && email?.touched">
         <p *ngIf="email?.hasError('required')" class="text-danger mensaje">
           El email es requerido.
         </p>
-        <p *ngIf="email?.hasError('email')" class="text-danger mensaje">
-          El formato de email debe ser válido.
-        </p>
       </div>
-      <input type="password" placeholder="Password" formControlName="contrasena" class="mb-0 mt-3"
-             [ngClass]="{'is-invalid': contrasena?.errors && contrasena?.touched, 'is-valid': !contrasena?.errors&& contrasena?.touched}"/>
+  </div>
+      <div>
+        <label class="form-label" for="password">Usuario </label>
+      <input id="password" [(ngModel)]="password"  name="password" type="password" placeholder="Password"
+             class="mb-0 mt-3"
+             [ngClass]="{'is-invalid': contrasena?.errors && contrasena?.touched, 'is-valid': !contrasena?.errors&& contrasena?.touched}" required/>
       <div *ngIf="contrasena?.errors && contrasena?.touched">
         <p *ngIf="contrasena?.hasError('required')" class="text-danger mensaje">
           La contraseña es requerida.
@@ -20,7 +23,14 @@
           La contraseña debe ser de 8 o más caracteres.
         </p>
       </div>
-      <button style="background:#9FD4CA" class="login mb-0 mt-3">Login</button>
+      </div>
+      <button type="submit" style="background:#9FD4CA" class="login mb-0 mt-3">Login</button>
     </form>
   </div>
+  <div>
+    <p>Todavia no tienes una cuenta?
+      <a>Registrate</a>
+    </p>
+  </div>
 </div>
+

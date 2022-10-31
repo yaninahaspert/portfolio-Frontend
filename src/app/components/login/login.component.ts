@@ -1,8 +1,10 @@
-
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AutenticacionService} from "../../servicio/autenticacion.service";
+import {TokenServicio} from "../../servicio/token.servicio";
+import {AuthService} from "../../servicio/auth.service";
+import {LoginUsuario} from "../../modal/login-usuario";
+
 
 @Component({
   selector: 'app-login',
@@ -10,10 +12,17 @@ import {AutenticacionService} from "../../servicio/autenticacion.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isLogged = false;
+  isLoggingFail = false;
+  loginUsuario!: LoginUsuario;
+  nombreUsuario!: string;
+  password!: string;
+  roles: string[] = [];
+  errMsj!: string;
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private autenticacionServicio: AutenticacionService, private ruta: Router) {
+  constructor(private formBuilder: FormBuilder, private ruta: Router, private tokenServicio: TokenServicio, private authServicio: AuthService) {
     this.form = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -23,7 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.tokenServicio.getToken()) {
+      this.isLogged = true
+      this.isLoggingFail = false;
+      this.roles = this.tokenServicio.getAuthorities();
+    }
   }
+
   get email() {
     return this.form.get('email');
   }
@@ -31,11 +46,25 @@ export class LoginComponent implements OnInit {
   get contrasena() {
     return this.form.get('contrasena');
   }
-  onEnviar(event: Event) {
-    event.preventDefault;
-    this.autenticacionServicio.Iniciarsesion(this.form.value).subscribe((data: any) => {
-      console.log("DATA:" + JSON.stringify(data))
-      this.ruta.navigate(["/formulario"])
-    })
+
+  onLogin(): void {
+    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    this.authServicio.login(this.loginUsuario)
+      .subscribe(data => {
+          this.isLogged = true;
+          this.isLoggingFail = false;
+          this.tokenServicio.setToken(data.token);
+          this.tokenServicio.setUsername(data.nombreUsuario);
+          this.tokenServicio.setAuthorities(data.authorities);
+          this.roles = data.authorities;
+          this.ruta.navigate(['/portada']);
+        },
+        err => {
+          this.isLogged = false;
+          this.isLoggingFail = true;
+          this.errMsj = err.error.mensaje;
+          console.log(this.errMsj);
+        }
+    );
   }
 }
