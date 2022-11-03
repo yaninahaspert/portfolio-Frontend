@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ServicioService} from "../../servicio.service";
 import {Persona} from "./persona";
-import {ACERCADEMI} from "./acercademi.json";
 import {AcercademiService} from "./acercademi.service";
 import Swal from "sweetalert2";
+import {TokenServicio} from "../../servicio/token.servicio";
+
 
 @Component({
   selector: 'app-acercademi',
@@ -13,14 +13,20 @@ import Swal from "sweetalert2";
 export class AcercademiComponent implements OnInit {
 
   personas: Persona[] = [];
+  isLogger= false;
 
-  constructor(private acercademiService: AcercademiService) {
-
+  constructor(private acercademiService: AcercademiService,
+              private tokenServicio: TokenServicio) {
   }
 
   ngOnInit(): void {
     this.acercademiService.getAcercademi().subscribe(
       acercademi => this.personas = acercademi);
+    if (this.tokenServicio.getToken()) {
+      this.isLogger = true;
+    } else {
+      this.isLogger = false;
+    }
   }
 
   delete(acercademi: Persona): void{

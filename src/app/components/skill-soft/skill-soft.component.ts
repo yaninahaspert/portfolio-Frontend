@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenServicio} from "../../servicio/token.servicio";
 
 
 @Component({
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skill-soft.component.css']
 })
 export class SkillSoftComponent implements OnInit {
+  isLogger=false;
 
-  constructor() { }
+  constructor(private tokenServicio: TokenServicio) { }
 
   ngOnInit(): void {
+    if (this.tokenServicio.getToken()) {
+      this.isLogger = true;
+    } else {
+      this.isLogger = false;
+    }
   }
 
 }

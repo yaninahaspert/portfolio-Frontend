@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenServicio} from "../../servicio/token.servicio";
 
 @Component({
   selector: 'app-skills-hard',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skills-hard.component.css']
 })
 export class SkillsHardComponent implements OnInit {
-
-  constructor() { }
+isLogger=false;
+  constructor(private tokenServicio: TokenServicio) { }
 
   ngOnInit(): void {
+    if (this.tokenServicio.getToken()) {
+      this.isLogger = true;
+    } else {
+      this.isLogger = false;
+    }
   }
 
 }

@@ -1,12 +1,13 @@
+
 import {Injectable} from "@angular/core";
-import {Persona} from "./persona";
+import {Experiencia} from "./Experiencia";
 import {catchError, map, Observable, of, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 
 @Injectable()
-export class AcercademiService {
-  private urlEndpoint: string = 'http://localhost:8080/api/personas';
+export class ExperienciaService {
+  private urlEndpoint: string = 'http://localhost:8080/api/experiencias';
   private httpHeaders = new HttpHeaders({'content-type': 'application/json'})
 
   constructor(private http: HttpClient,
@@ -21,9 +22,9 @@ export class AcercademiService {
     return false;
   }
 
-  getAcercademi(): Observable<Persona[]> {
+  getExperiencia(): Observable<Experiencia[]> {
     return this.http.get(this.urlEndpoint).pipe(
-      map((response) => response as Persona[]),
+      map((response) => response as Experiencia[]),
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
@@ -31,8 +32,8 @@ export class AcercademiService {
     );
   }
 
-  create(acercademi: Persona): Observable<Persona> {
-    return this.http.post<Persona>(this.urlEndpoint, acercademi, {headers: this.httpHeaders})
+  create(experiencia_: Experiencia): Observable<Experiencia> {
+    return this.http.post<Experiencia>(this.urlEndpoint, experiencia_, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
@@ -40,8 +41,8 @@ export class AcercademiService {
   }
 
   //editar
-  getPersonaEditada(id: number): Observable<Persona> {
-    return this.http.get<Persona>(`${this.urlEndpoint}/${id}`)
+  getExperienciaEditada(id: number): Observable<Experiencia> {
+    return this.http.get<Experiencia>(`${this.urlEndpoint}/${id}`)
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
@@ -49,8 +50,8 @@ export class AcercademiService {
   }
 
   //actualizar
-  update(acercademi: Persona): Observable<Persona> {
-    return this.http.put<Persona>(`${this.urlEndpoint}/${acercademi.id}`, acercademi, {headers: this.httpHeaders})
+  update(experiencia_: Experiencia): Observable<Experiencia> {
+    return this.http.put<Experiencia>(`${this.urlEndpoint}/${experiencia_.id}`, experiencia_, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
@@ -58,8 +59,8 @@ export class AcercademiService {
   }
 
 //eliminar
-  delete(id: number | undefined): Observable<Persona> {
-    return this.http.delete<Persona>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
+  delete(id: number | undefined): Observable<Experiencia> {
+    return this.http.delete<Experiencia>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);

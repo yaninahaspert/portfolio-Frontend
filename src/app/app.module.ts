@@ -13,7 +13,7 @@ import { SkillsHardComponent } from './components/skills-hard/skills-hard.compon
 import { SkillSoftComponent } from './components/skill-soft/skill-soft.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
-import { ExperinciaComponent } from './components/experincia/experincia.component';
+import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -33,11 +33,12 @@ import { FormularioComponent } from './components/acercademi/formulario.componen
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FormularioBannerComponent } from './components/banner/formulario-banner.component';
 import { FormularioEstudiosComponent } from './components/estudios/formulario-estudios.component';
-import { FormularioExperienciaComponent } from './components/experincia/formulario-experiencia.component';
+import { FormularioExperienciaComponent } from './components/experiencia/formulario-experiencia.component';
 import { FormulariosProyectosComponent } from './components/proyectos/formularios-proyectos.component';
 import { FormularioSoftComponent } from './components/skill-soft/formulario-soft.component';
 import {interceptorProvider} from "./servicio/interceptor";
-
+import {EstudioService} from "./components/estudios/estudio.service";
+import {ExperienciaService} from "./components/experiencia/experiencia.service";
 
 const appRoutes:Routes=[
   {
@@ -65,6 +66,10 @@ const appRoutes:Routes=[
     component: FormularioComponent,
   },
   {
+    path:'formularioexperiencia',
+    component: FormularioExperienciaComponent,
+  },
+  {
     path:'**',
     component: PageNotFoundComponent,
   },
@@ -81,7 +86,7 @@ const appRoutes:Routes=[
     SkillSoftComponent,
     FooterComponent,
     ProyectosComponent,
-    ExperinciaComponent,
+    ExperienciaComponent,
     PageNotFoundComponent,
     HomeComponent,
     LoginComponent,
@@ -112,7 +117,9 @@ const appRoutes:Routes=[
   providers: [
     interceptorProvider,
     ServicioService,
-    AcercademiService
+    AcercademiService,
+    EstudioService,
+    ExperienciaService
   ],
   bootstrap: [AppComponent]
 })

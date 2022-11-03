@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Persona} from "./persona";
 import {AcercademiService} from "./acercademi.service";
 import {Router, ActivatedRoute} from "@angular/router";
-import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 

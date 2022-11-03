@@ -13,7 +13,7 @@ export class Interceptor {
     const token = this.tokenServicio.getToken()
     if (token != null) {
       intReq = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer' + token)
+        headers: req.headers.set('Authorization', 'Bearer ' + token)
       });
     }
     return next.handle(intReq);

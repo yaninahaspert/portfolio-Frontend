@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import {TokenServicio} from "../../servicio/token.servicio";
 export class NavbarComponent implements OnInit {
   isLogger = false;
 
-  constructor(private tokenServicio: TokenServicio) {
+  constructor(private tokenServicio: TokenServicio, private ruta: Router) {
   }
 
   ngOnInit(): void {
@@ -22,6 +23,9 @@ export class NavbarComponent implements OnInit {
 
   onLogOut(): void {
     this.tokenServicio.logOut();
-    window.location.reload();
+    this.ruta.navigate(['/portada']);
+    //window.location.reload();
+
+
   }
 }

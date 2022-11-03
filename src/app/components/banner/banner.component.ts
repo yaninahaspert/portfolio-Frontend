@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ServicioService} from "../../servicio.service";
 import {Persona} from "../acercademi/persona";
 import {AcercademiService} from "../acercademi/acercademi.service";
 import Swal from "sweetalert2";
+import {TokenServicio} from "../../servicio/token.servicio";
 
 @Component({
   selector: 'app-banner',
@@ -10,18 +11,26 @@ import Swal from "sweetalert2";
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-
+  isLogger = false;
   personas: Persona[] = [];
 
-  constructor(private acercademiService: AcercademiService) {
+  constructor(private acercademiService: AcercademiService, private tokenServicio: TokenServicio) {
 
   }
+
   ngOnInit(): void {
+    this.acercademiService.getAcercademi().subscribe(
+      acercademi => this.personas = acercademi);
+    if (this.tokenServicio.getToken()) {
+      this.isLogger = true;
+    } else {
+      this.isLogger = false;
+    }
     this.acercademiService.getAcercademi().subscribe(
       acercademi => this.personas = acercademi);
   }
 
-  delete(acercademi: Persona): void{
+  delete(acercademi: Persona): void {
     Swal.fire({
       title: 'Estas seguro?',
       text: "seguro que desea elimanar los datos",
@@ -33,7 +42,7 @@ export class BannerComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.acercademiService.delete(acercademi.id).subscribe(
-          response=>{
+          response => {
             Swal.fire(
               'Eliminado!',
               'Los datos han sido eliminado con éxito.',
