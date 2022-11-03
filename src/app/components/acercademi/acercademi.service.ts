@@ -39,7 +39,6 @@ export class AcercademiService {
       }))
   }
 
-  //editar
   getPersonaEditada(id: number): Observable<Persona> {
     return this.http.get<Persona>(`${this.urlEndpoint}/${id}`)
       .pipe(catchError(e => {
@@ -48,7 +47,6 @@ export class AcercademiService {
       }))
   }
 
-  //actualizar
   update(acercademi: Persona): Observable<Persona> {
     return this.http.put<Persona>(`${this.urlEndpoint}/${acercademi.id}`, acercademi, {headers: this.httpHeaders})
       .pipe(catchError(e => {
@@ -57,13 +55,11 @@ export class AcercademiService {
       }))
   }
 
-//eliminar
   delete(id: number | undefined): Observable<Persona> {
     return this.http.delete<Persona>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
       }))
-
   }
 }

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import Swal from 'sweetalert2';
 import {Experiencia} from "./Experiencia";
-import {AcercademiService} from "../acercademi/acercademi.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ExperienciaService} from "./experiencia.service";
 
@@ -12,7 +11,11 @@ import {ExperienciaService} from "./experiencia.service";
   styleUrls: ['./formulario-experiencia.component.css']
 })
 export class FormularioExperienciaComponent implements OnInit {
-public experiencia_: Experiencia= new Experiencia()
+
+  changed: Date | undefined;
+
+  public experiencia_: Experiencia = new Experiencia()
+
   constructor(private experienciaService: ExperienciaService,
               private router: Router,
               private activateRouter: ActivatedRoute) {
@@ -21,18 +24,19 @@ public experiencia_: Experiencia= new Experiencia()
   ngOnInit(): void {
     this.llenarinputs()
   }
-  llenarinputs():void{
-    this.activateRouter.params.subscribe(params=>{
-      let id=params['id']
-      if(id){
-        this.experienciaService.getExperienciaEditada(id).subscribe((experiencia_)=>this.experiencia_=experiencia_)
+
+  llenarinputs(): void {
+    this.activateRouter.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.experienciaService.getExperienciaEditada(id).subscribe((experiencia_) => this.experiencia_ = experiencia_)
       }
     })
   }
 
   public create(): void {
     this.experienciaService.create(this.experiencia_)
-      .subscribe(persona=> {
+      .subscribe(persona => {
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -48,8 +52,9 @@ public experiencia_: Experiencia= new Experiencia()
       )
 
   }
-  update():void{
-    this.experienciaService.update(this.experiencia_).subscribe(experiencia_ =>{
+
+  update(): void {
+    this.experienciaService.update(this.experiencia_).subscribe(experiencia_ => {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -62,5 +67,13 @@ public experiencia_: Experiencia= new Experiencia()
         this.router.navigate(["/portada"])
       }, 1500);
     })
+  }
+
+  SendDataonChange(event: any) {
+    console.log(event.target.value);
+  }
+
+  onClick() {
+    console.log(this.changed);
   }
 }

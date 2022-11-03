@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ESTUDIO} from "./estudio.json";
 import {Estudio} from "./Estudio";
+import {Observable, of} from "rxjs";
+import {Experiencia} from "../experiencia/Experiencia";
 
 
 @Injectable({
@@ -9,8 +11,8 @@ import {Estudio} from "./Estudio";
 export class EstudioService {
 
   constructor() {}
-    getEstudio(): Estudio[] {
-    return ESTUDIO
+    getEstudios():Observable<Estudio[]> {
+    return of (ESTUDIO);
   }
   }
 

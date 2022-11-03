@@ -28,19 +28,19 @@ export class ExperienciaComponent implements OnInit {
 
   delete(experiencia_: Experiencia): void {
     Swal.fire({
-      title: 'Estas seguro?',
-      text: "seguro que desea elimanar los datos",
+      title: '¿Estás seguro?',
+      text: "¿Seguro que deseas eliminar los datos?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'si, eliminar!'
+      confirmButtonText: 'Si, ¡eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
         this.experienciaService.delete(experiencia_.id).subscribe(
           response => {
             Swal.fire(
-              'Eliminado!',
+              '¡Eliminado!',
               'Los datos han sido eliminado con éxito.',
               'success'
             )

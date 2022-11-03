@@ -25,7 +25,9 @@ estudios: Estudio[] | undefined;
     } else {
       this.isLogger = false;
     }
-    this.estudios=this.estudioService.getEstudio();
+   this.estudioService.getEstudios().subscribe(
+     estudios=>this.estudios=estudios
+   )
   }
 
 }

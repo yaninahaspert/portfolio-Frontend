@@ -13,7 +13,7 @@ import {TokenServicio} from "../../servicio/token.servicio";
 export class AcercademiComponent implements OnInit {
 
   personas: Persona[] = [];
-  isLogger= false;
+  isLogger = false;
 
   constructor(private acercademiService: AcercademiService,
               private tokenServicio: TokenServicio) {
@@ -29,28 +29,27 @@ export class AcercademiComponent implements OnInit {
     }
   }
 
-  delete(acercademi: Persona): void{
-  Swal.fire({
-    title: 'Estas seguro?',
-    text: "seguro que desea elimanar los datos",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'si, eliminar!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.acercademiService.delete(acercademi.id).subscribe(
-        response=>{
-          Swal.fire(
-            'Eliminado!',
-            'Los datos han sido eliminado con éxito.',
-            'success'
-          )
-        }
-      )
-
-    }
-  })
-}
+  delete(acercademi: Persona): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¿Seguro que deseas elimanar los datos",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, ¡Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.acercademiService.delete(acercademi.id).subscribe(
+          response => {
+            Swal.fire(
+              '¡Eliminado!',
+              'Los datos han sido eliminado con éxito.',
+              'success'
+            )
+          }
+        )
+      }
+    })
+  }
 }

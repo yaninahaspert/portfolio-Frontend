@@ -42,6 +42,9 @@ import {ExperienciaService} from "./components/experiencia/experiencia.service";
 
 const appRoutes:Routes=[
   {
+    path: '', redirectTo: '/portada', pathMatch: 'full'
+  },
+  {
     path: 'portada',
     component: HomeComponent
   },

@@ -1,15 +1,14 @@
 <div class="container my-5">
-  <form #form="ngForm" (submit)="create()" #desabilitar_boton="ngForm">
+  <form #form="ngForm" (submit)="create()" #deshabilitar_boton="ngForm">
     <p class="boton"> AGREGÁ TU EXPERIENCIA LABORAL</p>
     <div class="formulario mx-5 px-5">
       <div class="form-group">
         <label>EMPRESA*</label>
         <input type="text" class="form-control my-3" [(ngModel)]="experiencia_.empresa" name="empresa"
-               placeholder="Nombre de la empresa" required
+               placeholder="Ingresá el nombre de la empresa" required
                #empresa="ngModel">
         <div *ngIf="empresa.invalid && (empresa.dirty || empresa.touched)"
              class="alerta">
-
           <div class="alerta" *ngIf="empresa.errors?.['required']">
             Campo obligatorio.
           </div>
@@ -18,40 +17,32 @@
 
       <div class="form-group">
         <label>FECHA DE INICIO DE LA RELACION LABORAL*</label>
-        <input type="url" class="form-control my-3" placeholder="Fecha de inicio" required
-               [(ngModel)]="experiencia_.inicio"
-               name="inicio" #inicio="ngModel">
+        <input type="date" class="form-control my-3" required [(ngModel)]="experiencia_.inicio" name="inicio"
+               #inicio="ngModel">
         <div *ngIf="inicio.invalid && (inicio.dirty || inicio.touched)"
              class="alerta">
-
           <div class="alerta" *ngIf="inicio.errors?.['required']">
             Campo obligatorio.
           </div>
         </div>
       </div>
-      <div class="form-group">
 
+      <div class="form-group mb-3">
+        <label>¿ES TU TRABAJO ACTUAL?</label>
+        <input class="mx-3" type="checkbox" [(ngModel)]="experiencia_.esTrabajoActual">
+      </div>
+
+      <div class="form-group">
         <label>FECHA DE FINALIZACIÓN DE LA RELACION LABORAL*</label>
-        <input type="url" class="form-control my-3" placeholder="Fecha de finalización"
-               required [(ngModel)]="experiencia_.fin"
-               name="fin" #fin="ngModel">
-        <div *ngIf="fin.invalid && (fin.dirty || fin.touched)"
-             class="alerta">
-          <div class="alerta" *ngIf="fin.errors?.['required']">
-            Campo obligatorio.
-          </div>
-        </div>
+        <input type="date" class="form-control my-3" [(ngModel)]="experiencia_.fin">
       </div>
 
       <div class="form-group">
         <label>FUNCIONES*</label>
-        <input type="url" class="form-control my-3"
-               placeholder="Funciones" required
+        <input type="text" class="form-control my-3" placeholder="Ingresas tus funciones" required
                [(ngModel)]="experiencia_.funciones"
                name="funciones" #funciones="ngModel">
-        <div *ngIf="funciones.invalid && (funciones.dirty || funciones.touched)"
-             class="alerta">
-
+        <div *ngIf="funciones.invalid && (funciones.dirty || funciones.touched)" class="alerta">
           <div class="alerta" *ngIf="funciones.errors?.['required']">
             Campo obligatorio.
           </div>
@@ -60,42 +51,27 @@
       <div>
 
         <label>PUESTO*</label>
-        <textarea type="text" class="form-control my-3" name="funciones"
-                  placeholder="Puesto" [(ngModel)]="experiencia_.puesto"
-                  required #puesto="ngModel">>
+        <textarea type="text" class="form-control my-3" name="puesto" [(ngModel)]="experiencia_.puesto"
+                  required #puesto="ngModel">
             </textarea>
-        <div *ngIf="funciones.invalid && (funciones.dirty || funciones.touched)"
-             class="alerta">
-
-          <div class="alerta" *ngIf="funciones.errors?.['required']">
-            Campo obligatorio.
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>¿ES TU TRABAJO ACTUAL?*</label>
-        <input type="url" class="form-control my-3" placeholder="Ingresá la URL de la foto de tu perfil" required
-               [(ngModel)]="experiencia_.esTrabajoActual"
-               name="esTrabajoActual" #esTrabajoActual="ngModel">
-        <div *ngIf="esTrabajoActual.invalid && (esTrabajoActual.dirty || esTrabajoActual.touched)"
-             class="alerta">
-
-          <div class="alerta" *ngIf="esTrabajoActual.errors?.['required']">
+        <div *ngIf="puesto.invalid && (puesto.dirty || puesto.touched)" class="alerta">
+          <div class="alerta" *ngIf="puesto.errors?.['required']">
             Campo obligatorio.
           </div>
         </div>
       </div>
 
       <div class="boton">
-        <button type="submit" class="btn btn-primary my-3 enviar" [disabled]="!desabilitar_boton.form.valid">ENVIAR
+        <button type="submit" class="btn btn-primary my-3 enviar" [disabled]="!deshabilitar_boton.form.valid">ENVIAR
         </button>
       </div>
       <button type="submit" class="btn btn-primary my-3 volver" [routerLink]="['/administrar']">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
              class="bi bi-skip-backward mx-2" viewBox="0 0 16 16">
-          <path
-            d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
+          <path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52
+          -.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653
+          -.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5
+          -.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
         </svg>
         VOLVER
       </button>

@@ -1,0 +1,27 @@
+.boton{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.formulario{
+  justify-content: center;
+  width: 75%;
+}
+.alerta{
+  color: red;
+}
+.volver{
+  background: #f8af75;
+  border: 1px solid #f8af75;
+  font-weight: bold;
+}
+.enviar{
+  background:#9FD4CA;
+  border:1px solid #9FD4CA;
+  font-weight: bold;
+}

@@ -40,7 +40,6 @@ export class ExperienciaService {
       }))
   }
 
-  //editar
   getExperienciaEditada(id: number): Observable<Experiencia> {
     return this.http.get<Experiencia>(`${this.urlEndpoint}/${id}`)
       .pipe(catchError(e => {
@@ -49,7 +48,6 @@ export class ExperienciaService {
       }))
   }
 
-  //actualizar
   update(experiencia_: Experiencia): Observable<Experiencia> {
     return this.http.put<Experiencia>(`${this.urlEndpoint}/${experiencia_.id}`, experiencia_, {headers: this.httpHeaders})
       .pipe(catchError(e => {
@@ -58,13 +56,11 @@ export class ExperienciaService {
       }))
   }
 
-//eliminar
   delete(id: number | undefined): Observable<Experiencia> {
     return this.http.delete<Experiencia>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
       }))
-
   }
 }

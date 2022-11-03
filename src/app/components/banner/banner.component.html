@@ -20,9 +20,10 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <div  *ngIf="isLogger" class="d-flex mx-2 botones_edicion"
+        <div *ngIf="isLogger" class="d-flex mx-2 botones_edicion"
              style="justify-content: end">
-          <div [routerLink]="['/formulario', personas[0].id]" class="boton_editar" title="Editar banner" style="margin-right: 10px">
+          <div [routerLink]="['/formulario', personas[0].id]" class="boton_editar" title="Editar banner"
+               style="margin-right: 10px">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                  class="bi bi-pen-fill lapiz" viewBox="0 0 16 16">
               <path
@@ -38,7 +39,7 @@
           </div>
         </div>
         <div>
-          <img class="img-fluid foto_banner" src="assets/images/circulo-removebg-preview(1)-overlay.png">
+          <img class="{{item.urlImagenPresentacion}}">
         </div>
       </div>
     </div>
