@@ -39,6 +39,10 @@ import { FormularioSoftComponent } from './components/skill-soft/formulario-soft
 import {interceptorProvider} from "./servicio/interceptor";
 import {EstudioService} from "./components/estudios/estudio.service";
 import {ExperienciaService} from "./components/experiencia/experiencia.service";
+import {FormularioHardComponent} from "./components/skills-hard/formulario-hard.component";
+import {HardskillService} from "./components/skills-hard/hardskill.service";
+import {SoftSkillService} from "./components/skill-soft/soft-skill.service";
+import {ProyectoService} from "./components/proyectos/proyecto.service";
 
 const appRoutes:Routes=[
   {
@@ -71,6 +75,23 @@ const appRoutes:Routes=[
   {
     path:'formularioexperiencia',
     component: FormularioExperienciaComponent,
+  },
+
+  {
+    path:'formularioestudio',
+    component: FormularioEstudiosComponent,
+  },
+  {
+    path:'formulariosoft',
+    component: FormularioSoftComponent,
+  },
+  {
+    path:'formulariohard',
+    component: FormularioHardComponent,
+  },
+  {
+    path:'formularioproyecto',
+    component: FormulariosProyectosComponent,
   },
   {
     path:'**',
@@ -122,7 +143,10 @@ const appRoutes:Routes=[
     ServicioService,
     AcercademiService,
     EstudioService,
-    ExperienciaService
+    ExperienciaService,
+    ProyectoService,
+    HardskillService,
+    SoftSkillService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,55 @@
 .btn_agregar{
   margin-right: 350px;
 }
+
+ul, ol {
+  list-style:none;
+}
+
+.nav > li {
+  float:left;
+}
+
+.nav li li a {
+  color:white;
+  background: black;
+  text-decoration:none;
+  padding:10px 12px;
+  display:block;
+  border-radius: 5px;
+  border: 1px solid gray ;
+}
+.nav li li a:hover {
+  transform: scale(1.1);
+}
+.nav li a {
+  color:white;
+  text-decoration:none;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+}
+
+.nav li:hover > ul {
+  display:block;
+
+}
+
+.nav li ul li {
+  position:relative;
+}
+
+.nav li ul li ul {
+  right:-140px;
+  top:0px;
+}
 .encabezado{
   display: flex;
   justify-content: space-between;
 }
+

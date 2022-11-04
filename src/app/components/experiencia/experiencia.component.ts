@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {ExperienciaService} from "./experiencia.service";
-
 import {Experiencia} from "./Experiencia";
 
 @Component({

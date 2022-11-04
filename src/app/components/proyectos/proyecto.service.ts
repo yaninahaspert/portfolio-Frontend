@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Estudio} from "./Estudio";
+import {Proyecto} from "./Proyecto";
 import {catchError, map, Observable, of, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -8,9 +8,9 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
-export class EstudioService {
+export class ProyectoService {
 
-  private urlEndpoint: string = 'http://localhost:8080/api/estudios';
+  private urlEndpoint: string = 'http://localhost:8080/api/proyectos';
   private httpHeaders = new HttpHeaders({'content-type': 'application/json'})
 
   constructor(private http: HttpClient,
@@ -25,9 +25,9 @@ export class EstudioService {
     return false;
   }
 
-  getEstudio(): Observable<Estudio[]> {
+  getProyecto(): Observable<Proyecto[]> {
     return this.http.get(this.urlEndpoint).pipe(
-      map((response) => response as Estudio[]),
+      map((response) => response as Proyecto[]),
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
@@ -35,32 +35,32 @@ export class EstudioService {
     );
   }
 
-  create(estudio: Estudio): Observable<Estudio> {
-    return this.http.post<Estudio>(this.urlEndpoint, estudio, {headers: this.httpHeaders})
+  create(proyecto: Proyecto): Observable<Proyecto> {
+    return this.http.post<Proyecto>(this.urlEndpoint, proyecto, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
       }))
   }
 
-  getEstudioEditado(id: number): Observable<Estudio> {
-    return this.http.get<Estudio>(`${this.urlEndpoint}/${id}`)
+  getProyectoEditado(id: number): Observable<Proyecto> {
+    return this.http.get<Proyecto>(`${this.urlEndpoint}/${id}`)
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
       }))
   }
 
-  update(estudio: Estudio): Observable<Estudio> {
-    return this.http.put<Estudio>(`${this.urlEndpoint}/${estudio.id}`, estudio, {headers: this.httpHeaders})
+  update(proyecto: Proyecto): Observable<Proyecto> {
+    return this.http.put<Proyecto>(`${this.urlEndpoint}/${proyecto.id}`, proyecto, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);
       }))
   }
 
-  delete(id: number | undefined): Observable<Estudio> {
-    return this.http.delete<Estudio>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
+  delete(id: number | undefined): Observable<Proyecto> {
+    return this.http.delete<Proyecto>(`${this.urlEndpoint}/${id}`, {headers: this.httpHeaders})
       .pipe(catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);

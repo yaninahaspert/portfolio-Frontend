@@ -32,7 +32,7 @@ export class AcercademiComponent implements OnInit {
   delete(acercademi: Persona): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "¿Seguro que deseas elimanar los datos",
+      text: "¿Seguro que deseas eliminar los datos?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

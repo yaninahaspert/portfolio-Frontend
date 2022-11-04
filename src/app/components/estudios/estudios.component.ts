@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ServicioService} from "../../servicio.service";
 import {TokenServicio} from "../../servicio/token.servicio";
 import {Estudio} from "./Estudio";
-import {ESTUDIO} from "./estudio.json";
 import {EstudioService} from "./estudio.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-estudios',
@@ -11,7 +10,8 @@ import {EstudioService} from "./estudio.service";
   styleUrls: ['./estudios.component.css']
 })
 export class EstudiosComponent implements OnInit {
-estudios: Estudio[] | undefined;
+
+estudios: Estudio[] =[];
   isLogger = false;
 
   constructor(private tokenServicio: TokenServicio,
@@ -20,14 +20,38 @@ estudios: Estudio[] | undefined;
   }
 
   ngOnInit(): void {
+    this.estudioService.getEstudio().subscribe(
+      estudio => this.estudios = estudio);
+
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
     } else {
       this.isLogger = false;
     }
-   this.estudioService.getEstudios().subscribe(
-     estudios=>this.estudios=estudios
-   )
+
+  }
+  delete(estudio: Estudio): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¿Seguro que deseas eliminar los datos?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ¡eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.estudioService.delete(estudio.id).subscribe(
+          response => {
+            Swal.fire(
+              '¡Eliminado!',
+              'Los datos han sido eliminado con éxito.',
+              'success'
+            )
+          }
+        )
+      }
+    })
   }
 
 }

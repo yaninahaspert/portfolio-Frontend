@@ -68,12 +68,4 @@ export class FormularioExperienciaComponent implements OnInit {
       }, 1500);
     })
   }
-
-  SendDataonChange(event: any) {
-    console.log(event.target.value);
-  }
-
-  onClick() {
-    console.log(this.changed);
-  }
 }

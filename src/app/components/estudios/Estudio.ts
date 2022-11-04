@@ -1,12 +1,12 @@
 export class Estudio {
   id: number | undefined;
-  institucion: string | undefined;
+  urlLogo: string | undefined;
+  nombreInstitucion: string | undefined;
   direccion: string | undefined;
-  imagen: string | undefined;
+  ciudad: string | undefined;
   telefono: string | undefined;
-  anio: string | undefined;
-  provincia: string | undefined;
-  instructor: string | undefined;
+  sitioWeb: string | undefined;
   titulo: string | undefined;
   duracion: string | undefined;
+  anoFin: string | undefined;
 }

@@ -57,8 +57,7 @@ export class LoginComponent implements OnInit {
           this.tokenServicio.setUsername(data.nombreUsuario);
           this.tokenServicio.setAuthorities(data.authorities);
           this.roles = data.authorities;
-          this.ruta.navigate(['/administrar']);
-          window.location.reload();
+          this.ruta.navigate(['/administrar']).then(() => window.location.reload())
         },
         err => {
           this.isLogged = false;

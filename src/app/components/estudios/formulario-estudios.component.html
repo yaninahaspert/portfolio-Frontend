@@ -1,1 +1,102 @@
-<p>formulario-estudios works!</p>
+<div class="container my-5">
+  <form #form="ngForm" (submit)="create()" #deshabilitar_boton="ngForm">
+    <p class="boton"> AGREGÁ DATOS DE TUS ESTUDIOS O CURSOS</p>
+    <div class="formulario mx-5 px-5">
+      <div class="form-group">
+        <label>INSTITUCIÓN*</label>
+        <input type="text" class="form-control my-3" [(ngModel)]="estudio.nombreInstitucion" name="institucion"
+               placeholder="Ingresá el nombre de la institución" required
+               #institucion="ngModel">
+        <div *ngIf="institucion.invalid && (institucion.dirty || institucion.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="institucion.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>DIRECCIÓN</label>
+        <input type="text" class="form-control my-3"  name="direccion" placeholder="Ingresá la dirección de la institucion" [(ngModel)]="estudio.direccion">
+      </div>
+
+      <div class="form-group">
+        <label>CIUDAD</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá la provincia" [(ngModel)]="estudio.ciudad" name="estudios">
+      </div>
+
+      <div class="form-group">
+        <label>TELÉFONO/SITIO WEB*</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá el telefono de la intitución"  required [(ngModel)]="estudio.telefono" name="sitio"
+               #telefono="ngModel">
+        <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="telefono.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>LOGO DE LA INSTITUCIÓN*</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá el logo de la institución" required
+               [(ngModel)]="estudio.urlLogo"
+               name="imagen" #imagen="ngModel">
+        <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)" class="alerta">
+          <div class="alerta" *ngIf="imagen.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label>AÑO DE EGRESO*</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá el año de egreso" name="anoFin" [(ngModel)]="estudio.anoFin"
+                  required #puesto="ngModel"/>
+        <div *ngIf="puesto.invalid && (puesto.dirty || puesto.touched)" class="alerta">
+          <div class="alerta" *ngIf="puesto.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label>DURACIÓN*</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá la duración" name="duracion" [(ngModel)]="estudio.duracion"
+                  required #duracion="ngModel"/>
+        <div *ngIf="duracion.invalid && (duracion.dirty || duracion.touched)" class="alerta">
+          <div class="alerta" *ngIf="duracion.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label>TÍTULO OBTENIDO/NOMBRE DEL CURSO*</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá el nombre del titulo obtenido o curso" name="titulo" [(ngModel)]="estudio.titulo"
+                  required #titulo="ngModel"/>
+        <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alerta">
+          <div class="alerta" *ngIf="titulo.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="boton">
+        <button type="submit" class="btn btn-primary my-3 enviar" [disabled]="!deshabilitar_boton.form.valid">ENVIAR
+        </button>
+      </div>
+      <button type="submit" class="btn btn-primary my-3 volver" [routerLink]="['/administrar']">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+             class="bi bi-skip-backward mx-2" viewBox="0 0 16 16">
+          <path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52
+          -.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653
+          -.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5
+          -.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
+        </svg>
+        VOLVER
+      </button>
+    </div>
+  </form>
+</div>
+
