@@ -3,5 +3,5 @@ export class Proyecto {
   urlImagen: string | undefined;
   descripcion: string | undefined;
   url: string | undefined;
-  titulo: string | undefined;
+  nombre: string | undefined;
 }

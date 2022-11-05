@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {EstudioService} from "../estudios/estudio.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import Swal from "sweetalert2";
+import {Soft} from "./Soft";
+import {SoftSkillService} from "./soft-skill.service";
 
 @Component({
   selector: 'app-formulario-soft',
@@ -7,9 +12,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioSoftComponent implements OnInit {
 
-  constructor() { }
+  public soft: Soft = new Soft()
 
-  ngOnInit(): void {
+  constructor(private softSkillService: SoftSkillService,
+              private router: Router,
+              private activateRouter: ActivatedRoute) {
   }
 
+  ngOnInit(): void {
+    this.llenarinputs()
+  }
+
+  llenarinputs(): void {
+    this.activateRouter.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.softSkillService.getSoftEditado(id).subscribe((soft) => this.soft = soft)
+      }
+    })
+  }
+
+  public create(): void {
+    this.softSkillService.create(this.soft)
+      .subscribe(persona => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '¡Agregado con éxito!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          setTimeout(() => {
+            this.router.navigate(["/portada"])
+          }, 1500);
+        }
+      )
+  }
+
+  update(): void {
+    this.softSkillService.update(this.soft).subscribe(estudio => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '¡Editado con éxito!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        this.router.navigate(["/portada"])
+      }, 1500);
+    })
+  }
 }

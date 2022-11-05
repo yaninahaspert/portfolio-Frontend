@@ -1,5 +1,5 @@
 :root {
-  --background: #9fd4ca;
+  --background: #d09fd4;
 }
 
 * {
@@ -401,7 +401,7 @@
 
 @keyframes turn_in {
   5% {
-    background: conic-gradient(#9fd4ca calc(var(--progress) * .95), gray 0deg);
+    background: conic-gradient(red calc(var(--progress) * .95), gray 0deg);
   }
   10% {
     background: conic-gradient(#9fd4ca calc(var(--progress) * .9), gray 0deg);
@@ -655,4 +655,3 @@
   background:#9FD4CA;
   border:1px solid #9FD4CA;
 }
-

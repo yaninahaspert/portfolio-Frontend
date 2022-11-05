@@ -128,6 +128,7 @@ const appRoutes:Routes=[
     FormularioExperienciaComponent,
     FormulariosProyectosComponent,
     FormularioSoftComponent,
+    FormularioHardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,71 @@
+<div class="container my-5">
+  <form #form="ngForm" (submit)="create()" #deshabilitar_boton="ngForm">
+    <p class="boton"> AGREGÁ DATOS DE TUS PROYECTOS REALIZADOS</p>
+    <div class="formulario mx-5 px-5">
+      <div class="form-group">
+        <label>NOMBRE*</label>
+        <input type="text" class="form-control my-3" [(ngModel)]="proyecto.nombre" name="nombre"
+               placeholder="Ingresá el nombre de tu proyecto" required
+               #nombre="ngModel">
+        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="nombre.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>DESCRIPCIÓN*</label>
+        <input type="text" class="form-control my-3" name="descripcion" placeholder="Ingresá la descripción"
+               [(ngModel)]="proyecto.descripcion" required
+               #descripcion="ngModel">
+        <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="descripcion.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>URL DE LA IMAGEN QUE LO REPRESENTA*</label>
+        <input type="url" class="form-control my-3" placeholder="Ingresá la URL de la imagen" required
+               [(ngModel)]="proyecto.urlImagen"
+               name="imagen" #imagen="ngModel">
+        <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)" class="alerta">
+          <div class="alerta" *ngIf="imagen.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label>URL QUE MUESTRE EL PROYECTO*</label>
+        <input type="url" class="form-control my-3" placeholder="Ingresá URL" name="anoFin" [(ngModel)]="proyecto.url"
+               required #url="ngModel"/>
+        <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alerta">
+          <div class="alerta" *ngIf="url.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div class="boton">
+        <button type="submit" class="btn btn-primary my-3 enviar" [disabled]="!deshabilitar_boton.form.valid">ENVIAR
+        </button>
+      </div>
+      <button type="submit" class="btn btn-primary my-3 volver" [routerLink]="['/administrar']">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+             class="bi bi-skip-backward mx-2" viewBox="0 0 16 16">
+          <path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52
+          -.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653
+          -.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5
+          -.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
+        </svg>
+        VOLVER
+      </button>
+    </div>
+  </form>
+</div>
 
