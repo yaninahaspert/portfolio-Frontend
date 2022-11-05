@@ -11,7 +11,7 @@ ul, ol {
   color:white;
   background: black;
   text-decoration:none;
-  padding:10px 12px;
+  padding:10px 5px;
   display:block;
   border-radius: 5px;
   border: 1px solid gray ;
@@ -22,8 +22,11 @@ ul, ol {
 .nav li a {
   color:white;
   text-decoration:none;
-  padding:10px 12px;
+  padding:10px 5px;
   display:block;
+}
+.nav li a :hover{
+  transform: scale(1.1);
 }
 
 .nav li ul {

@@ -640,12 +640,16 @@
 }
 .boton_editar {
   background: white;
-  border-radius: 50px;
+  border-radius: 5px;
   width: 50px;
   height: 50px;
   justify-content: center;
   display: flex;
   align-items: center;
+  border: 1px solid #1c2834;
+}
+.boton_editar:hover{
+  transform: scale(1.1);
 }
 
 .lapiz{

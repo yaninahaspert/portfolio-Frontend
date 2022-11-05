@@ -50,7 +50,8 @@ export class SkillsHardComponent implements OnInit {
           }
         )
       }
-    })
+    }).then(() => window.location.reload())
+
   }
 }
 
