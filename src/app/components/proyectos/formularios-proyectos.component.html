@@ -18,12 +18,15 @@
       <div class="form-group">
         <label>DESCRIPCIÓN*</label>
         <input type="text" class="form-control my-3" name="descripcion" placeholder="Ingresá la descripción"
-               [(ngModel)]="proyecto.descripcion" required
+               [(ngModel)]="proyecto.descripcion" required maxlength="180"
                #descripcion="ngModel">
         <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
              class="alerta">
           <div class="alerta" *ngIf="descripcion.errors?.['required']">
             Campo obligatorio.
+          </div>
+          <div *ngIf="descripcion?.errors?.['maxlength']" class="text-danger">
+           Descripción demasiado larga.
           </div>
         </div>
       </div>

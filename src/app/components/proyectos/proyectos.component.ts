@@ -3,6 +3,8 @@ import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {Proyecto} from "./Proyecto";
 import {ProyectoService} from "./proyecto.service";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+
 
 @Component({
   selector: 'app-proyectos',
@@ -52,5 +54,8 @@ export class ProyectosComponent implements OnInit {
       }
     }).then(() => window.location.reload())
 
+  }
+  drop(event: CdkDragDrop<object[]>) {
+    moveItemInArray(this.proyectos, event.previousIndex, event.currentIndex);
   }
 }

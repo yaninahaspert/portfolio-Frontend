@@ -29,9 +29,9 @@
     No hay registros de los proyectos en la base de datos.
   </div>
   <br>
-  <div class="body">
-    <div class="contenedor_misproyectos">
-      <div class="card p-2" *ngFor="let item of proyectos">
+  <div class="body" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="contenedor_misproyectos" >
+      <div class="card p-2" *ngFor="let item of proyectos" cdkDrag>
         <div style="float: right">
           <ul class="nav text-white" *ngIf="isLogger" style="float: right">
             <li [routerLink]="['/formularioproyecto', item.id]" title="Editar"><a>

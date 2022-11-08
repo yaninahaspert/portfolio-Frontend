@@ -3,6 +3,7 @@ import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {ExperienciaService} from "./experiencia.service";
 import {Experiencia} from "./Experiencia";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-experiencia',
@@ -48,5 +49,8 @@ export class ExperienciaComponent implements OnInit {
       }
     }).then(() => window.location.reload())
 
+  }
+  drop(event: CdkDragDrop<object[]>) {
+    moveItemInArray(this.experiencias, event.previousIndex, event.currentIndex);
   }
 }

@@ -3,6 +3,8 @@ import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {Hard} from "./Hard";
 import {HardskillService} from "./hardskill.service";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+
 
 @Component({
   selector: 'app-skills-hard',
@@ -52,6 +54,9 @@ export class SkillsHardComponent implements OnInit {
       }
     }).then(() => window.location.reload())
 
+  }
+  drop(event: CdkDragDrop<object[]>) {
+    moveItemInArray(this.hards, event.previousIndex, event.currentIndex);
   }
 }
 

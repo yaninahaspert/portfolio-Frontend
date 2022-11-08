@@ -52,10 +52,12 @@
       <div>
         <label>AÑO DE EGRESO*</label>
         <input type="text" class="form-control my-3" placeholder="Ingresá el año de egreso" name="fin" [(ngModel)]="estudio.anoFin"
-                  required #puesto="ngModel"/>
-        <div *ngIf="puesto.invalid && (puesto.dirty || puesto.touched)" class="alerta">
-          <div class="alerta" *ngIf="puesto.errors?.['required']">
+                  required #fin="ngModel" pattern="[0-9]{4}"/>
+        <div *ngIf="fin.invalid && (fin.dirty || fin.touched)" class="alerta">
+          <div class="alerta" *ngIf="fin.errors?.['required']">
             Campo obligatorio.
+          </div>
+          <div *ngIf="fin.errors?.pattern"> Debe ingresar un número de 4 dígitos.
           </div>
         </div>
       </div>

@@ -43,6 +43,7 @@ import {FormularioHardComponent} from "./components/skills-hard/formulario-hard.
 import {HardskillService} from "./components/skills-hard/hardskill.service";
 import {SoftSkillService} from "./components/skill-soft/soft-skill.service";
 import {ProyectoService} from "./components/proyectos/proyecto.service";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 const appRoutes:Routes=[
   {
@@ -157,6 +158,7 @@ const appRoutes:Routes=[
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     ReactiveFormsModule,
+    DragDropModule,
 
   ],
   providers: [

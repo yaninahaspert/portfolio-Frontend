@@ -30,8 +30,8 @@
     No hay registros de los soft kills en la base de datos.
   </div>
   <div class="body">
-    <div class="contenedor_hard">
-      <div class="contenedor_skill" *ngFor="let item of softs">
+    <div cdkDropList class="contenedor_hard" (cdkDropListDropped)="drop($event)">
+      <div class="contenedor_skill" *ngFor="let item of softs" cdkDrag>
         <div style="float: right">
           <ul class="nav text-white" *ngIf="isLogger">
             <li [routerLink]="['/formulariosoft', item.id]" title="Editar"><a>

@@ -3,6 +3,7 @@ import {TokenServicio} from "../../servicio/token.servicio";
 import {Estudio} from "./Estudio";
 import {EstudioService} from "./estudio.service";
 import Swal from "sweetalert2";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-estudios',
@@ -53,5 +54,8 @@ estudios: Estudio[] =[];
       }
     }).then(() => window.location.reload())
 
+  }
+  drop(event: CdkDragDrop<object[]>) {
+    moveItemInArray(this.estudios, event.previousIndex, event.currentIndex);
   }
 }

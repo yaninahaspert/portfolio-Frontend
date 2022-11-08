@@ -22,8 +22,8 @@
     No hay registros de los hard skills en la base de datos.
   </div>
     <div class="body">
-    <div class="contenedor_hard">
-        <div class="contenedor_skill" *ngFor="let item of hards">
+    <div cdkDropList class="contenedor_hard" (cdkDropListDropped)="drop($event)">
+        <div  class="contenedor_skill" *ngFor="let item of hards" cdkDrag >
           <div style="float: right">
             <ul class="nav text-white" *ngIf="isLogger">
               <li [routerLink]="['/formulariohard', item.id]" title="Editar"><a><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class=" mx-2 bi bi-pencil-square" viewBox="0 0 16 16">

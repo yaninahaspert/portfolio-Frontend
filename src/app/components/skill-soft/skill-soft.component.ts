@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
-import {Estudio} from "../estudios/Estudio";
-import {EstudioService} from "../estudios/estudio.service";
 import Swal from "sweetalert2";
 import {Soft} from "./Soft";
 import {SoftSkillService} from "./soft-skill.service";
-
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-skill-soft',
@@ -56,5 +54,8 @@ export class SkillSoftComponent implements OnInit {
       }
     }).then(() => window.location.reload())
 
+  }
+  drop(event: CdkDragDrop<object[]>) {
+    moveItemInArray(this.softs, event.previousIndex, event.currentIndex);
   }
 }

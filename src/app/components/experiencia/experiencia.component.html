@@ -26,10 +26,10 @@
     </svg>
     No hay registros de las experiencias laborales en la base de datos.
   </div>
-  <div class="body">
+  <div class="body" cdkDropList (cdkDropListDropped)="drop($event)">
     <div class="contenedor_experiencia" >
 
-      <div class="card" *ngFor="let item of experiencias">
+      <div class="card" *ngFor="let item of experiencias" cdkDrag>
         <ul class="nav text-white ml-auto" *ngIf="isLogger" style="margin-left: auto">
           <li [routerLink]="['/formularioexperiencia', item.id]" title="Editar"><a>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
