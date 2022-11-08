@@ -54,7 +54,7 @@ export class SkillSoftComponent implements OnInit {
           }
         )
       }
-    })
-  }
+    }).then(() => window.location.reload())
 
+  }
 }

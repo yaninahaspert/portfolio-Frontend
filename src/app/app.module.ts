@@ -76,9 +76,17 @@ const appRoutes:Routes=[
     path:'formularioexperiencia',
     component: FormularioExperienciaComponent,
   },
+  {
+    path:'formularioexperiencia/:id',
+    component: FormularioExperienciaComponent,
+  },
 
   {
     path:'formularioestudio',
+    component: FormularioEstudiosComponent,
+  },
+  {
+    path:'formularioestudio/:id',
     component: FormularioEstudiosComponent,
   },
   {
@@ -86,11 +94,23 @@ const appRoutes:Routes=[
     component: FormularioSoftComponent,
   },
   {
+    path:'formulariosoft/:id',
+    component: FormularioSoftComponent,
+  },
+  {
     path:'formulariohard',
     component: FormularioHardComponent,
   },
   {
+    path:'formulariohard/:id',
+    component: FormularioHardComponent,
+  },
+  {
     path:'formularioproyecto',
+    component: FormulariosProyectosComponent,
+  },
+  {
+    path:'formularioproyecto/:id',
     component: FormulariosProyectosComponent,
   },
   {

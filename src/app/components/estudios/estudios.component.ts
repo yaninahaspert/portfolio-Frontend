@@ -51,7 +51,7 @@ estudios: Estudio[] =[];
           }
         )
       }
-    })
-  }
+    }).then(() => window.location.reload())
 
+  }
 }

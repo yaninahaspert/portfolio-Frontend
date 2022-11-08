@@ -29,12 +29,12 @@
 
       <div class="form-group mb-3">
         <label>¿ES TU TRABAJO ACTUAL?</label>
-        <input class="mx-3" type="checkbox" [(ngModel)]="experiencia_.esTrabajoActual">
+        <input class="mx-3" type="checkbox" [(ngModel)]="experiencia_.esTrabajoActual" name="trabajoActual">
       </div>
 
       <div class="form-group">
         <label>FECHA DE FINALIZACIÓN DE LA RELACION LABORAL</label>
-        <input type="date" class="form-control my-3" [(ngModel)]="experiencia_.fin">
+        <input type="date" class="form-control my-3" [(ngModel)]="experiencia_.fin" name="fin">
       </div>
 
       <div class="form-group">
@@ -48,8 +48,20 @@
           </div>
         </div>
       </div>
-      <div>
 
+      <div class="form-group">
+        <label>URL LOGO*</label>
+        <input type="text" class="form-control my-3" placeholder="Ingresá la URL del logo" required
+               [(ngModel)]="experiencia_.urlLogo"
+               name="urlLogo" #urlLogo="ngModel">
+        <div *ngIf="urlLogo.invalid && (urlLogo.dirty || urlLogo.touched)" class="alerta">
+          <div class="alerta" *ngIf="urlLogo.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
+
+      <div>
         <label>PUESTO*</label>
         <textarea type="text" class="form-control my-3" name="puesto" [(ngModel)]="experiencia_.puesto"
                   required #puesto="ngModel">

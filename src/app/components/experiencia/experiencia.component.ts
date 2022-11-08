@@ -46,7 +46,7 @@ export class ExperienciaComponent implements OnInit {
           }
         )
       }
-    })
+    }).then(() => window.location.reload())
+
   }
 }
-

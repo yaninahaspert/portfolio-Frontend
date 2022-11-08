@@ -22,12 +22,12 @@
 
       <div class="form-group">
         <label>CIUDAD</label>
-        <input type="text" class="form-control my-3" placeholder="Ingresá la provincia" [(ngModel)]="estudio.ciudad" name="estudios">
+        <input type="text" class="form-control my-3" placeholder="Ingresá la provincia" [(ngModel)]="estudio.ciudad" name="ciudad">
       </div>
 
       <div class="form-group">
         <label>TELÉFONO/SITIO WEB*</label>
-        <input type="text" class="form-control my-3" placeholder="Ingresá el telefono de la intitución"  required [(ngModel)]="estudio.telefono" name="sitio"
+        <input type="text" class="form-control my-3" placeholder="Ingresá el telefono de la intitución"  required [(ngModel)]="estudio.telefono" name="telefono"
                #telefono="ngModel">
         <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)"
              class="alerta">
@@ -51,7 +51,7 @@
 
       <div>
         <label>AÑO DE EGRESO*</label>
-        <input type="text" class="form-control my-3" placeholder="Ingresá el año de egreso" name="anoFin" [(ngModel)]="estudio.anoFin"
+        <input type="text" class="form-control my-3" placeholder="Ingresá el año de egreso" name="fin" [(ngModel)]="estudio.anoFin"
                   required #puesto="ngModel"/>
         <div *ngIf="puesto.invalid && (puesto.dirty || puesto.touched)" class="alerta">
           <div class="alerta" *ngIf="puesto.errors?.['required']">

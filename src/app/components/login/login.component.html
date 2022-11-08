@@ -1,33 +1,38 @@
 <div class="login-page">
   <div class="form">
-    <form #f="ngForm" (ngSubmit)="onLogin()" class="login-form" novalidate>
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-    </svg>
-</div>
-  <div>
-      <input id="nombreUsuario" [(ngModel)]="nombreUsuario" name="nombreUsuario" type="email" placeholder="Usuario"  class="mb-0 mt-3" required/>
-      <div *ngIf="email?.errors && email?.touched">
-        <p *ngIf="email?.hasError('required')" class="text-danger mensaje">
-          El email es requerido.
-        </p>
-      </div>
-  </div>
+    <form #f="ngForm" (ngSubmit)="onLogin()" class="login-form" #deshabilitar_boton="ngForm">
       <div>
-      <input id="password" [(ngModel)]="password"  name="password" type="password" placeholder="Contraseña"
-             class="mb-0 mt-3" required/>
-      <div *ngIf="contrasena?.errors && contrasena?.touched">
-        <p *ngIf="contrasena?.hasError('required')" class="text-danger mensaje">
-          La contraseña es requerida.
-        </p>
-        <p *ngIf="contrasena?.errors?.minLength" class="text-danger mensaje">
-          La contraseña debe ser de 8 o más caracteres.
-        </p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle"
+             viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
       </div>
+      <div>
+        <input id="nombreUsuario" [(ngModel)]="nombreUsuario" name="nombreUsuario" type="email" placeholder="Usuario"
+               class="mb-0 mt-3" required #email="ngModel"/>
+        <div *ngIf="email?.errors && email?.touched">
+          <p *ngIf="email?.hasError('required')" class="text-danger mensaje">
+            El email es requerido.
+          </p>
+        </div>
       </div>
-      <button type="submit" style="background:#9FD4CA" class="login mb-0 mt-3">Ingresar</button>
+      <div>
+        <input id="password" [(ngModel)]="password" name="password" type="password" placeholder="Contraseña"
+               class="mb-0 mt-3" required minlength="7" #contrasena="ngModel"/>
+        <div *ngIf="contrasena?.errors && contrasena?.touched">
+          <p *ngIf="contrasena?.hasError('required')" class="text-danger mensaje">
+            La contraseña es requerida.
+          </p>
+          <p *ngIf="contrasena?.errors?.minLength" class="text-danger mensaje">
+            La contraseña debe ser de 7 o más caracteres.
+          </p>
+        </div>
+      </div>
+      <button type="submit" style="background:#9FD4CA" class="login mb-0 mt-3"
+              [disabled]="!deshabilitar_boton.form.valid">Ingresar
+      </button>
     </form>
   </div>
 </div>

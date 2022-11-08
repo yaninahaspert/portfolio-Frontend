@@ -50,7 +50,7 @@ export class ProyectosComponent implements OnInit {
           }
         )
       }
-    })
-  }
+    }).then(() => window.location.reload())
 
+  }
 }

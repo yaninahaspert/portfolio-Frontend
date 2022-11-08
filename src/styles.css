@@ -273,7 +273,8 @@
   .logos {
     width: 80px;
   }
-  .logos2{
+
+  .logos2 {
     width: 90px;
   }
 
@@ -301,7 +302,7 @@
   }
 
   .descripcion_banner h1 {
-    font-size: 1.3rem;
+    font-size: 21px;
   }
 
   .banner {
@@ -312,7 +313,6 @@
     text-align: center;
   }
 }
-
 @media screen and (max-width: 576px) {
   .contenedor_experiencia .card {
     text-align: center;

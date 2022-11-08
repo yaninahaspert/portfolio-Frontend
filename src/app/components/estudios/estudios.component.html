@@ -26,8 +26,8 @@
     </svg>
     No hay registros de los estudios/cursos en la base de datos.
   </div>
-  <div class="misEstudios pb-5" *ngFor="let item of estudios">
-    <div class="mb-3 card_estudios" >
+  <div class="misEstudios pb-5" >
+    <div class="mb-3 card_estudios" *ngFor="let item of estudios" >
       <ul class="nav text-white" *ngIf="isLogger" style="float: right">
         <li [routerLink]="['/formularioestudio',item.id]" title="Editar"><a>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
