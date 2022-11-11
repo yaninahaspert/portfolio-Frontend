@@ -34,7 +34,7 @@ export class RedesComponent implements OnInit {
           })
 
           setTimeout(() => {
-            this.router.navigate(["/portada"])
+            this.router.navigate(["/portada"]).then(() => window.location.reload())
           }, 1500);
         }
       )

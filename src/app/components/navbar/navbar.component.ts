@@ -3,7 +3,6 @@ import {TokenServicio} from "../../servicio/token.servicio";
 import {Router} from "@angular/router";
 import {RedesService} from "../redes/redes.service";
 import {Red} from "../redes/Red";
-import {Estudio} from "../estudios/Estudio";
 import Swal from "sweetalert2";
 
 @Component({
