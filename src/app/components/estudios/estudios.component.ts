@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
 import {Estudio} from "./Estudio";
 import {EstudioService} from "./estudio.service";
@@ -11,7 +11,7 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
   styleUrls: ['./estudios.component.css']
 })
 export class EstudiosComponent implements OnInit {
-  idUsuario: string | undefined;
+  @Input() idUsuario: string = "";
   estudios: Estudio[] = [];
   isLogger = false;
 
@@ -21,8 +21,7 @@ export class EstudiosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estudioService.getEstudio().subscribe(
-      estudio => this.estudios = estudio);
+    this.estudioService.getEstudios(this.idUsuario).subscribe(estudios => this.estudios = estudios);
 
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
