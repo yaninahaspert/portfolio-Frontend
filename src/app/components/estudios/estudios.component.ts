@@ -11,7 +11,7 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
   styleUrls: ['./estudios.component.css']
 })
 export class EstudiosComponent implements OnInit {
-  @Input() idUsuario: string = "";
+  @Input() idPersona: string = "";
   estudios: Estudio[] = [];
   isLogger = false;
 
@@ -21,7 +21,7 @@ export class EstudiosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estudioService.getEstudios(this.idUsuario).subscribe(estudios => this.estudios = estudios);
+    this.estudioService.getEstudios(this.idPersona).subscribe(estudios => this.estudios = estudios);
 
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
