@@ -45,7 +45,6 @@ import {SoftSkillService} from "./components/skill-soft/soft-skill.service";
 import {ProyectoService} from "./components/proyectos/proyecto.service";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { RedesComponent } from './components/redes/redes.component';
-import {PdfMakeWrapper} from 'pdfmake-wrapper';
 
 const appRoutes:Routes=[
   {
@@ -168,7 +167,6 @@ const appRoutes:Routes=[
     ReactiveFormsModule,
     DragDropModule,
 
-
   ],
   providers: [
     interceptorProvider,
@@ -178,8 +176,7 @@ const appRoutes:Routes=[
     ExperienciaService,
     ProyectoService,
     HardskillService,
-    SoftSkillService,
-    PdfMakeWrapper,
+    SoftSkillService
   ],
   bootstrap: [AppComponent]
 })
