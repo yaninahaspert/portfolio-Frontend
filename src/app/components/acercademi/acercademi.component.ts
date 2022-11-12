@@ -3,6 +3,7 @@ import {Persona} from "./persona";
 import {AcercademiService} from "./acercademi.service";
 import Swal from "sweetalert2";
 import {TokenServicio} from "../../servicio/token.servicio";
+import {PdfMakeWrapper} from "pdfmake-wrapper";
 
 
 @Component({
