@@ -11,8 +11,8 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
   styleUrls: ['./estudios.component.css']
 })
 export class EstudiosComponent implements OnInit {
-
-estudios: Estudio[] =[];
+  idUsuario: string | undefined;
+  estudios: Estudio[] = [];
   isLogger = false;
 
   constructor(private tokenServicio: TokenServicio,
@@ -31,6 +31,7 @@ estudios: Estudio[] =[];
     }
 
   }
+
   delete(estudio: Estudio): void {
     Swal.fire({
       title: '¿Estás seguro?',
@@ -55,6 +56,7 @@ estudios: Estudio[] =[];
     }).then(() => window.location.reload())
 
   }
+
   drop(event: CdkDragDrop<object[]>) {
     moveItemInArray(this.estudios, event.previousIndex, event.currentIndex);
   }

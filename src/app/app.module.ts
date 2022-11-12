@@ -52,7 +52,7 @@ const appRoutes:Routes=[
     path: '', redirectTo: '/portada', pathMatch: 'full'
   },
   {
-    path: 'portada',
+    path: 'portada/:id',
     component: HomeComponent
   },
   {
