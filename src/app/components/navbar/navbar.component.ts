@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {RedesService} from "../redes/redes.service";
 import {Red} from "../redes/Red";
 import Swal from "sweetalert2";
@@ -14,20 +14,17 @@ export class NavbarComponent implements OnInit {
   isLogger = false;
   redes: Red[] =[];
 
-  constructor(private tokenServicio: TokenServicio,
-              private ruta: Router,
-              private redService: RedesService) {
-  }
+  constructor(
+    private tokenServicio: TokenServicio,
+    private ruta: Router,
+    private redService: RedesService,
+    private activateRouter: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.redService.getRed().subscribe(
-      red => this.redes = red);
-
-    if (this.tokenServicio.getToken()) {
-      this.isLogger = true;
-    } else {
-      this.isLogger = false;
-    }
+    this.activateRouter.params.subscribe(params => {
+      this.redService.getRedes(params['id']).subscribe(red => this.redes = red);
+    })
   }
 
   onLogOut(): void {

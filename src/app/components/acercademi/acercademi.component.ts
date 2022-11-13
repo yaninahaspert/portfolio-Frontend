@@ -4,7 +4,6 @@ import {AcercademiService} from "./acercademi.service";
 import Swal from "sweetalert2";
 import {TokenServicio} from "../../servicio/token.servicio";
 
-
 @Component({
   selector: 'app-acercademi',
   templateUrl: './acercademi.component.html',

@@ -26,8 +26,8 @@ export class RedesService {
     return false;
   }
 
-  getRed(): Observable<Red[]> {
-    return this.http.get(this.urlEndpoint).pipe(
+  getRedes(idPersona: string): Observable<Red[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
       map((response) => response as Red[]),
       catchError(e => {
         this.isNoAutorizado(e);
