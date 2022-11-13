@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {Hard} from "./Hard";
@@ -12,7 +12,7 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
   styleUrls: ['./skills-hard.component.css']
 })
 export class SkillsHardComponent implements OnInit {
-
+  @Input() idPersona: string = "";
   hards: Hard[] =[];
   isLogger = false;
 
@@ -21,7 +21,7 @@ export class SkillsHardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hardskillService.getHard().subscribe(
+    this.hardskillService.getHard(this.idPersona).subscribe(
       hard => this.hards = hard);
 
     if (this.tokenServicio.getToken()) {

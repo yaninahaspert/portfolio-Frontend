@@ -25,8 +25,8 @@ export class SoftSkillService {
     return false;
   }
 
-  getSoft(): Observable<Soft[]> {
-    return this.http.get(this.urlEndpoint).pipe(
+  getSoft(idPersona: String): Observable<Soft[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
       map((response) => response as Soft[]),
       catchError(e => {
         this.isNoAutorizado(e);

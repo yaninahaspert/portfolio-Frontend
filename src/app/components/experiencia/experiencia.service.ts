@@ -22,8 +22,8 @@ export class ExperienciaService {
     return false;
   }
 
-  getExperiencia(): Observable<Experiencia[]> {
-    return this.http.get(this.urlEndpoint).pipe(
+  getExperiencia(idPersona: String): Observable<Experiencia[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
       map((response) => response as Experiencia[]),
       catchError(e => {
         this.isNoAutorizado(e);
