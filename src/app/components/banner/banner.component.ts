@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ServicioService} from "../../servicio.service";
 import {Persona} from "../acercademi/persona";
 import {AcercademiService} from "../acercademi/acercademi.service";
@@ -11,6 +11,7 @@ import {TokenServicio} from "../../servicio/token.servicio";
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
+  @Input() idPersona: string = "";
   isLogger = false;
   personas: Persona[] = [];
 
@@ -19,15 +20,13 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.acercademiService.getAcercademi().subscribe(
-      acercademi => this.personas = acercademi);
+    this.acercademiService.getAcercaDeMi(this.idPersona).subscribe(
+      acercademi => this.personas = [acercademi]);
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
     } else {
       this.isLogger = false;
     }
-    this.acercademiService.getAcercademi().subscribe(
-      acercademi => this.personas = acercademi);
   }
 
   delete(acercademi: Persona): void {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Persona} from "./persona";
 import {AcercademiService} from "./acercademi.service";
 import Swal from "sweetalert2";
@@ -11,7 +11,7 @@ import {TokenServicio} from "../../servicio/token.servicio";
   styleUrls: ['./acercademi.component.css']
 })
 export class AcercademiComponent implements OnInit {
-
+  @Input() idPersona: string = "";
   personas: Persona[] = [];
   isLogger = false;
 
@@ -20,8 +20,8 @@ export class AcercademiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.acercademiService.getAcercademi().subscribe(
-      acercademi => this.personas = acercademi);
+    this.acercademiService.getAcercaDeMi(this.idPersona).subscribe(
+      acercademi => this.personas = [acercademi]);
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
     } else {
