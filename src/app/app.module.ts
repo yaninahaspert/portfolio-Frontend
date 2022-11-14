@@ -44,7 +44,8 @@ import {HardskillService} from "./components/skills-hard/hardskill.service";
 import {SoftSkillService} from "./components/skill-soft/soft-skill.service";
 import {ProyectoService} from "./components/proyectos/proyecto.service";
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import { RedesComponent } from './components/redes/redes.component';
+import { RedesFormularioComponent } from './components/redes/redes-formulario.component';
+import { RedesComponent } from './components/redes/redes/redes.component';
 
 const appRoutes:Routes=[
   {
@@ -105,7 +106,7 @@ const appRoutes:Routes=[
   },
   {
     path:'formularioredes',
-    component: RedesComponent,
+    component: RedesFormularioComponent,
   },
   {
     path:'formulariohard/:id',
@@ -155,6 +156,8 @@ const appRoutes:Routes=[
     FormulariosProyectosComponent,
     FormularioSoftComponent,
     FormularioHardComponent,
+    RedesFormularioComponent,
+    RedesFormularioComponent,
     RedesComponent,
 
   ],

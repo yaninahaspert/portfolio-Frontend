@@ -3,7 +3,6 @@ import {catchError, map, Observable, of, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Red} from "./Red";
-import {Estudio} from "../estudios/Estudio";
 
 
 @Injectable({
@@ -26,8 +25,8 @@ export class RedesService {
     return false;
   }
 
-  getRedes(idPersona: string): Observable<Red[]> {
-    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
+  getRedes(idPersona_: string): Observable<Red[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona_}`).pipe(
       map((response) => response as Red[]),
       catchError(e => {
         this.isNoAutorizado(e);

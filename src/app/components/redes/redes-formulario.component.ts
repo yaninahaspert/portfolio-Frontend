@@ -6,11 +6,11 @@ import {Red} from "./Red";
 import {RedesService} from "./redes.service";
 
 @Component({
-  selector: 'app-redes',
-  templateUrl: './redes.component.html',
-  styleUrls: ['./redes.component.css']
+  selector: 'app-redes-formulario',
+  templateUrl: './redes-formulario.component.html',
+  styleUrls: ['./redes-formulario.component.css']
 })
-export class RedesComponent implements OnInit {
+export class RedesFormularioComponent implements OnInit {
 
   public red: Red = new Red()
 

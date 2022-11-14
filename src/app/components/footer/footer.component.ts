@@ -9,16 +9,12 @@ import {RedesService} from "../redes/redes.service";
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  isLogger = false;
-  redes: Red[] =[];
 
-  constructor(private redService: RedesService, private activateRouter: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.activateRouter.params.subscribe(params => {
-      this.redService.getRedes(params['id']).subscribe(red => this.redes = red);
-    })
+
   }
 
 }
