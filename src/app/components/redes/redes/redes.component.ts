@@ -11,7 +11,7 @@ import {RedesService} from "../redes.service";
   styleUrls: ['./redes.component.css']
 })
 export class RedesComponent implements OnInit {
-  @Input() idPersona_: string = "";
+  @Input() idPersona: string = "";
   isLogger = false;
   redes: Red[] =[];
 
@@ -25,7 +25,7 @@ export class RedesComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRouter.params.subscribe(params => {
-      this.redService.getRedes(this.idPersona_).subscribe(red => this.redes = red);
+      this.redService.getRedes(this.idPersona).subscribe(redes => this.redes = redes);
     })
   }
   delete(red: Red): void {

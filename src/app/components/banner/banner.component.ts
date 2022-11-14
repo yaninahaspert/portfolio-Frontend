@@ -12,7 +12,6 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class BannerComponent implements OnInit {
   @Input() idPersona: string = "";
-  idPersona_: string = "";
   isLogger = false;
   personas: Persona[] = [];
 
@@ -29,7 +28,7 @@ export class BannerComponent implements OnInit {
       this.isLogger = false;
     }
     this.activateRouter.params.subscribe(params => {
-      this.idPersona_ = params['id']
+      this.idPersona = params['id']
     })
   }
 
