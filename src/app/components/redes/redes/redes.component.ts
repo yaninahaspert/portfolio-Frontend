@@ -27,6 +27,11 @@ export class RedesComponent implements OnInit {
     this.activateRouter.params.subscribe(params => {
       this.redService.getRedes(this.idPersona).subscribe(redes => this.redes = redes);
     })
+    if (this.tokenServicio.getToken()) {
+      this.isLogger = true;
+    } else {
+      this.isLogger = false;
+    }
   }
   delete(red: Red): void {
     Swal.fire({
