@@ -46,6 +46,8 @@ import {ProyectoService} from "./components/proyectos/proyecto.service";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { RedesFormularioComponent } from './components/redes/redes-formulario.component';
 import { RedesComponent } from './components/redes/redes/redes.component';
+import {ContactoService} from "./components/contacto/contacto.service";
+
 
 const appRoutes:Routes=[
   {
@@ -64,7 +66,7 @@ const appRoutes:Routes=[
     component: AdministrarComponent
   },
   {
-    path:'contacto',
+    path:'contacto/:id',
     component: ContactoComponent,
   },
   {
@@ -159,6 +161,7 @@ const appRoutes:Routes=[
     RedesFormularioComponent,
     RedesFormularioComponent,
     RedesComponent,
+    ContactoComponent,
 
   ],
   imports: [
@@ -179,7 +182,8 @@ const appRoutes:Routes=[
     ExperienciaService,
     ProyectoService,
     HardskillService,
-    SoftSkillService
+    SoftSkillService,
+    ContactoService
   ],
   bootstrap: [AppComponent]
 })

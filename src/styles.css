@@ -627,12 +627,12 @@
 
 .iconos li a svg {
   background-color: #354355;
-  height: 1.8rem;
+  height: 35px;
+  width: 35px;
   border-radius: 5px;
   color: #9FD4CA;
   padding: 0.25rem 0.1rem;
   font-size: 1.8rem;
-  width: 1.8rem;
 }
 
 .iconos li a svg:hover {

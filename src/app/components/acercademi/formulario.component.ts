@@ -19,37 +19,59 @@ export class FormularioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.llenarinputs()
-  }
-  llenarinputs():void{
-    this.activateRouter.params.subscribe(params=>{
-      let id=params['id']
-      if(id){
-        this.acercademiService.getPersonaEditada(id).subscribe((acercademi)=>this.acercademi=acercademi)
-      }
+    this.activateRouter.params.subscribe(params => {
+      this.acercademi.id = params['id'];
+      this.llenarinputs();
     })
   }
 
-  public create(): void {
-    this.acercademiService.create(this.acercademi)
-      .subscribe(persona=> {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: '¡Agregado con éxito!',
-          showConfirmButton: false,
-          timer: 1500
-        })
+  llenarinputs(): void {
+    if (this.acercademi.id) {
+      this.acercademiService.getPersonaEditada(this.acercademi.id)
+        .subscribe((acercademi) => this.acercademi = acercademi)
+    }
+  }
 
-        setTimeout(() => {
-          this.router.navigate(["/portada"])
-        }, 1500);
-      }
-    )
+  public create(): void {
+    if (! this.acercademi.id) {
+      this.acercademiService.create(this.acercademi)
+        .subscribe(persona => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '¡Agregado con éxito!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+            setTimeout(() => {
+              this.router.navigate(["/portada"])
+            }, 1500);
+          }
+        )
+    } else {
+      this.acercademiService.update(this.acercademi)
+        .subscribe(persona => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '¡Agregado con éxito!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+            setTimeout(() => {
+              this.router.navigate(["/portada"])
+            }, 1500);
+          }
+        )
+    }
+
 
   }
-  update():void{
-    this.acercademiService.update(this.acercademi).subscribe(acercademi =>{
+
+  update(): void {
+    this.acercademiService.update(this.acercademi).subscribe(acercademi => {
       Swal.fire({
         position: 'center',
         icon: 'success',

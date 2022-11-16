@@ -21,12 +21,16 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    if (this.tokenServicio.getToken()) {
+      this.isLogger = true;
+    } else {
+      this.isLogger = false;
+    }
   }
 
   onLogOut(): void {
     this.tokenServicio.logOut();
-    this.ruta.navigate(['/portada']).then(() => window.location.reload())
+    this.ruta.navigate(['/login']).then(() => window.location.reload())
 
   }
 
