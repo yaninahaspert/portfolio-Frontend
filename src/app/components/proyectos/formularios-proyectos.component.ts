@@ -43,9 +43,13 @@ export class FormulariosProyectosComponent implements OnInit {
             timer: 1500
           })
 
-          setTimeout(() => {
-            this.router.navigate(["/portada"])
-          }, 1500);
+        setTimeout(() => {
+          if (this.proyecto.idPersona) {
+            this.router.navigate([`/portada/${this.proyecto.idPersona}`]);
+          } else {
+            this.router.navigate(["/portada"]);
+          }
+        }, 1500);
         }
       )
   }
@@ -61,7 +65,11 @@ export class FormulariosProyectosComponent implements OnInit {
       })
 
       setTimeout(() => {
-        this.router.navigate(["/portada"])
+        if (this.proyecto.idPersona) {
+          this.router.navigate([`/portada/${this.proyecto.idPersona}`]);
+        } else {
+          this.router.navigate(["/portada"]);
+        }
       }, 1500);
     })
   }

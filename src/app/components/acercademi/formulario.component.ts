@@ -45,7 +45,7 @@ export class FormularioComponent implements OnInit {
             })
 
             setTimeout(() => {
-              this.router.navigate(["/portada"])
+              this.router.navigate([`/portada/${this.acercademi.id}`])
             }, 1500);
           }
         )
@@ -81,7 +81,7 @@ export class FormularioComponent implements OnInit {
       })
 
       setTimeout(() => {
-        this.router.navigate(["/portada"])
+        this.router.navigate([`/portada/${this.acercademi.id}`])
       }, 1500);
     })
   }

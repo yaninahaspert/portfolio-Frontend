@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {EstudioService} from "../estudios/estudio.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {Soft} from "./Soft";
 import {SoftSkillService} from "./soft-skill.service";
+
 
 @Component({
   selector: 'app-formulario-soft',
@@ -20,14 +20,16 @@ export class FormularioSoftComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.llenarinputs()
+      this.llenarinputs();
   }
 
   llenarinputs(): void {
     this.activateRouter.params.subscribe(params => {
       let id = params['id']
       if (id) {
-        this.softSkillService.getSoftEditado(id).subscribe((soft) => this.soft = soft)
+        this.softSkillService.getSoftEditado(id).subscribe((soft) => {
+          this.soft = soft;
+        })
       }
     })
   }
@@ -44,7 +46,11 @@ export class FormularioSoftComponent implements OnInit {
           })
 
           setTimeout(() => {
-            this.router.navigate(["/portada"])
+            if (this.soft.idPersona) {
+              this.router.navigate([`/portada/${this.soft.idPersona}`]);
+            } else {
+              this.router.navigate(["/portada"]);
+            }
           }, 1500);
         }
       )
@@ -61,7 +67,11 @@ export class FormularioSoftComponent implements OnInit {
       })
 
       setTimeout(() => {
-        this.router.navigate(["/portada"])
+        if (this.soft.idPersona) {
+          this.router.navigate([`/portada/${this.soft.idPersona}`]);
+        } else {
+          this.router.navigate(["/portada"]);
+        }
       }, 1500);
     })
   }

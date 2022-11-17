@@ -50,7 +50,7 @@
 .banner {
   display: grid;
   align-content: center;
-  justify-content: center;
+  justify-content: end;
 }
 
 .boton_contactarme {

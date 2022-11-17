@@ -45,9 +45,13 @@ export class FormularioExperienciaComponent implements OnInit {
             timer: 1500
           })
 
-          setTimeout(() => {
-            this.router.navigate(["/portada"])
-          }, 1500);
+        setTimeout(() => {
+          if (this.experiencia_.idPersona) {
+            this.router.navigate([`/portada/${this.experiencia_.idPersona}`]);
+          } else {
+            this.router.navigate(["/portada"]);
+          }
+        }, 1500);
         }
       )
 
@@ -64,7 +68,11 @@ export class FormularioExperienciaComponent implements OnInit {
       })
 
       setTimeout(() => {
-        this.router.navigate(["/portada"])
+        if (this.experiencia_.idPersona) {
+          this.router.navigate([`/portada/${this.experiencia_.idPersona}`]);
+        } else {
+          this.router.navigate(["/portada"]);
+        }
       }, 1500);
     })
   }
