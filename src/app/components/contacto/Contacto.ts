@@ -3,5 +3,5 @@ export class Contacto {
   descripcion: string | undefined;
   asunto: string | undefined;
   email: string | undefined;
-  id_persona: string | undefined;
+  id_persona: number | undefined;
 }

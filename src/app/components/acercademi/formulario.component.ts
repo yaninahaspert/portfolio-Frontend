@@ -85,4 +85,5 @@ export class FormularioComponent implements OnInit {
       }, 1500);
     })
   }
+
 }

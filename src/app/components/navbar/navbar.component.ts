@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RedesService} from "../redes/redes.service";
-import {Red} from "../redes/Red";
-import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-navbar',
