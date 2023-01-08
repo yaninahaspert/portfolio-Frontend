@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./administrar.component.css']
 })
 export class AdministrarComponent implements OnInit {
-  personas: Persona[] = [];
   public acercademi: Persona = new Persona()
 
   constructor(private router: Router) { }
@@ -16,6 +15,6 @@ export class AdministrarComponent implements OnInit {
   ngOnInit(): void {
   }
   public redireccionar(): void {
-    this.router.navigate([`/portada/${this.acercademi.id}`]);
+    this.router.navigate([`/portada/${window.sessionStorage.getItem('personaLogueadaId')}`]);
   }
 }
