@@ -25,8 +25,8 @@ export class EstudioService {
     return false;
   }
 
-  getEstudio(): Observable<Estudio[]> {
-    return this.http.get(this.urlEndpoint).pipe(
+  getEstudios(idPersona: string): Observable<Estudio[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
       map((response) => response as Estudio[]),
       catchError(e => {
         this.isNoAutorizado(e);

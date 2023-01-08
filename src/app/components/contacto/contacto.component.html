@@ -1,45 +1,71 @@
-
 <div class="contact_form">
 
   <div class="formulario">
     <h1>Formulario de contacto</h1>
 
-    <form action="submeter-formulario.php" method="post">
-
-
-      <p>
+    <form (submit)="enviar()" #deshabilitar_boton="ngForm">
+      <div>
         <label for="nombre" class="colocar_nombre">Nombre
           <span class="obligatorio">*</span>
         </label>
-        <input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
-      </p>
+        <input [(ngModel)]="contacto.nombre" type="text" name="nombre" id="nombre" required
+               placeholder="Escribe tu nombre"
+               #nombre="ngModel"/>
+        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="nombre.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
 
-      <p>
+      <div>
         <label for="email" class="colocar_email">Email
           <span class="obligatorio">*</span>
         </label>
-        <input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
-      </p>
+        <input type="email" name="email" id="email" required placeholder="Escribe tu Email" [(ngModel)]="contacto.email"
+               #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="email.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
 
-      <p>
-        <label for="asunto" class="colocar_asunto">Asunto
+      <div>
+        <label for="asunto" id="asunto" class="colocar_asunto">Asunto
           <span class="obligatorio">*</span>
         </label>
-        <input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escribe un asunto">
-      </p>
+        <input type="text" name="introducir_asunto" id="assunto" required placeholder="Escribe un asunto" [(ngModel)]="contacto.asunto"
+               #asunto="ngModel">
+      <div *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)"
+           class="alerta">
+        <div class="alerta" *ngIf="asunto.errors?.['required']">
+          Campo obligatorio.
+        </div>
+      </div>
+      </div>
 
-      <p>
+      <div>
         <label for="mensaje" class="colocar_mensaje">Mensaje
           <span class="obligatorio">*</span>
         </label>
-        <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea>
-      </p>
+        <textarea name="mensaje" class="texto_mensaje" id="mensaje" required [(ngModel)]="contacto.descripcion"
+                  placeholder="Deja aquí tu comentario..." #descripcion="ngModel"></textarea>
+        <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+             class="alerta">
+          <div class="alerta" *ngIf="descripcion.errors?.['required']">
+            Campo obligatorio.
+          </div>
+        </div>
+      </div>
 
-      <button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+      <button type="submit" name="enviar" id="enviar" [disabled]="!deshabilitar_boton.form.valid"><p>Enviar</p></button>
 
       <p class="aviso">
         <span class="obligatorio"> * </span>los campos son obligatorios.
       </p>
     </form>
   </div>
-  </div>
+</div>

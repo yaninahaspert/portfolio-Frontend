@@ -4,3 +4,7 @@
   position: absolute;
   right: 290px;
 }
+.redes{
+  display: grid;
+  justify-content: center;
+}

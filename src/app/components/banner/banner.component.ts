@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ServicioService} from "../../servicio.service";
+import {Component, Input, OnInit} from '@angular/core';
 import {Persona} from "../acercademi/persona";
 import {AcercademiService} from "../acercademi/acercademi.service";
 import Swal from "sweetalert2";
 import {TokenServicio} from "../../servicio/token.servicio";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-banner',
@@ -11,29 +11,31 @@ import {TokenServicio} from "../../servicio/token.servicio";
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
+  @Input() idPersona: string = "";
   isLogger = false;
   personas: Persona[] = [];
 
-  constructor(private acercademiService: AcercademiService, private tokenServicio: TokenServicio) {
+  constructor(private acercademiService: AcercademiService, private tokenServicio: TokenServicio,private activateRouter: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    this.acercademiService.getAcercademi().subscribe(
-      acercademi => this.personas = acercademi);
+    this.acercademiService.getAcercaDeMi(this.idPersona).subscribe(
+      acercademi => this.personas = [acercademi]);
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
     } else {
       this.isLogger = false;
     }
-    this.acercademiService.getAcercademi().subscribe(
-      acercademi => this.personas = acercademi);
+    this.activateRouter.params.subscribe(params => {
+      this.idPersona = params['id']
+    })
   }
 
   delete(acercademi: Persona): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "¿Seguro que deseas elimanar los datos?",
+      text: "¿Seguro que deseas eliminar los datos?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

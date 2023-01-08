@@ -21,9 +21,9 @@ export class AcercademiService {
     return false;
   }
 
-  getAcercademi(): Observable<Persona[]> {
-    return this.http.get(this.urlEndpoint).pipe(
-      map((response) => response as Persona[]),
+  getAcercaDeMi(idPersona: string): Observable<Persona> {
+    return this.http.get(`${this.urlEndpoint}/${idPersona}`).pipe(
+      map((response) => response as Persona),
       catchError(e => {
         this.isNoAutorizado(e);
         return throwError(e);

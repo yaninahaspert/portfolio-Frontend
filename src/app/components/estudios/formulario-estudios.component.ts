@@ -42,9 +42,13 @@ export class FormularioEstudiosComponent implements OnInit {
             timer: 1500
           })
 
-          setTimeout(() => {
-            this.router.navigate(["/portada"])
-          }, 1500);
+        setTimeout(() => {
+          if (this.estudio.idPersona) {
+            this.router.navigate([`/portada/${this.estudio.idPersona}`]);
+          } else {
+            this.router.navigate(["/portada"]);
+          }
+        }, 1500);
         }
       )
   }
@@ -60,7 +64,11 @@ export class FormularioEstudiosComponent implements OnInit {
       })
 
       setTimeout(() => {
-        this.router.navigate(["/portada"])
+        if (this.estudio.idPersona) {
+          this.router.navigate([`/portada/${this.estudio.idPersona}`]);
+        } else {
+          this.router.navigate(["/portada"]);
+        }
       }, 1500);
     })
   }

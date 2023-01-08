@@ -7,4 +7,6 @@ export class Experiencia {
   funciones: string | undefined;
   esTrabajoActual: boolean | undefined;
   urlLogo: string | undefined;
+  idPersona: string | undefined;
+
 }

@@ -25,8 +25,8 @@ export class HardskillService {
     return false;
   }
 
-  getHard(): Observable<Hard[]> {
-    return this.http.get(this.urlEndpoint).pipe(
+  getHard(idPersona: String): Observable<Hard[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
       map((response) => response as Hard[]),
       catchError(e => {
         this.isNoAutorizado(e);

@@ -9,4 +9,6 @@ export class Estudio {
   titulo: string | undefined;
   duracion: string | undefined;
   anoFin: string | undefined;
+  idPersona: string | undefined;
+
 }

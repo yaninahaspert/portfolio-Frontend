@@ -43,9 +43,13 @@ export class FormularioHardComponent implements OnInit {
             timer: 1500
           })
 
-          setTimeout(() => {
-            this.router.navigate(["/portada"])
-          }, 1500);
+        setTimeout(() => {
+          if (this.hard.idPersona) {
+            this.router.navigate([`/portada/${this.hard.idPersona}`]);
+          } else {
+            this.router.navigate(["/portada"]);
+          }
+        }, 1500);
         }
       )
   }
@@ -61,7 +65,11 @@ export class FormularioHardComponent implements OnInit {
       })
 
       setTimeout(() => {
-        this.router.navigate(["/portada"])
+        if (this.hard.idPersona) {
+          this.router.navigate([`/portada/${this.hard.idPersona}`]);
+        } else {
+          this.router.navigate(["/portada"]);
+        }
       }, 1500);
     })
   }

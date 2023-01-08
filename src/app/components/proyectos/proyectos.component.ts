@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {Proyecto} from "./Proyecto";
@@ -12,6 +12,7 @@ import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
+  @Input() idPersona: string = "";
   isLogger = false;
   proyectos: Proyecto[] = [];
 
@@ -20,7 +21,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.proyetoService.getProyecto().subscribe(
+    this.proyetoService.getProyecto(this.idPersona).subscribe(
       proyecto => this.proyectos = proyecto);
 
     if (this.tokenServicio.getToken()) {

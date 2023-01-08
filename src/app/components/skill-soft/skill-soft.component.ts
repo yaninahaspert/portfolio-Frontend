@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TokenServicio} from "../../servicio/token.servicio";
 import Swal from "sweetalert2";
 import {Soft} from "./Soft";
@@ -11,7 +11,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
   styleUrls: ['./skill-soft.component.css']
 })
 export class SkillSoftComponent implements OnInit {
-
+  @Input() idPersona: string = "";
   softs: Soft[] =[];
   isLogger = false;
 
@@ -21,7 +21,7 @@ export class SkillSoftComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.softSkillService.getSoft().subscribe(
+    this.softSkillService.getSoft(this.idPersona).subscribe(
       soft => this.softs = soft);
 
     if (this.tokenServicio.getToken()) {

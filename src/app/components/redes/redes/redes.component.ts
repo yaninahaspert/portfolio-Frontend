@@ -1,37 +1,39 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TokenServicio} from "../../servicio/token.servicio";
-import {Estudio} from "./Estudio";
-import {EstudioService} from "./estudio.service";
+import {Red} from "../Red";
 import Swal from "sweetalert2";
-import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import {TokenServicio} from "../../../servicio/token.servicio";
+import {ActivatedRoute, Router} from "@angular/router";
+import {RedesService} from "../redes.service";
 
 @Component({
-  selector: 'app-estudios',
-  templateUrl: './estudios.component.html',
-  styleUrls: ['./estudios.component.css']
+  selector: 'app-redes',
+  templateUrl: './redes.component.html',
+  styleUrls: ['./redes.component.css']
 })
-export class EstudiosComponent implements OnInit {
+export class RedesComponent implements OnInit {
   @Input() idPersona: string = "";
-  estudios: Estudio[] = [];
   isLogger = false;
+  redes: Red[] =[];
 
-  constructor(private tokenServicio: TokenServicio,
-              private estudioService: EstudioService) {
 
-  }
+  constructor(
+    private tokenServicio: TokenServicio,
+    private ruta: Router,
+    private redService: RedesService,
+    private activateRouter: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.estudioService.getEstudios(this.idPersona).subscribe(estudios => this.estudios = estudios);
-
+    this.activateRouter.params.subscribe(params => {
+      this.redService.getRedes(this.idPersona).subscribe(redes => this.redes = redes);
+    })
     if (this.tokenServicio.getToken()) {
       this.isLogger = true;
     } else {
       this.isLogger = false;
     }
-
   }
-
-  delete(estudio: Estudio): void {
+  delete(red: Red): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: "¿Seguro que deseas eliminar los datos?",
@@ -42,7 +44,7 @@ export class EstudiosComponent implements OnInit {
       confirmButtonText: 'Si, ¡eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.estudioService.delete(estudio.id).subscribe(
+        this.redService.delete(red.id).subscribe(
           response => {
             Swal.fire(
               '¡Eliminado!',
@@ -56,7 +58,4 @@ export class EstudiosComponent implements OnInit {
 
   }
 
-  drop(event: CdkDragDrop<object[]>) {
-    moveItemInArray(this.estudios, event.previousIndex, event.currentIndex);
-  }
 }

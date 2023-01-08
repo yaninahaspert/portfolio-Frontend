@@ -25,8 +25,8 @@ export class ProyectoService {
     return false;
   }
 
-  getProyecto(): Observable<Proyecto[]> {
-    return this.http.get(this.urlEndpoint).pipe(
+  getProyecto(idPersona:String): Observable<Proyecto[]> {
+    return this.http.get(`${this.urlEndpoint}?id_persona=${idPersona}`).pipe(
       map((response) => response as Proyecto[]),
       catchError(e => {
         this.isNoAutorizado(e);
